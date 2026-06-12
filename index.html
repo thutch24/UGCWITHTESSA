@@ -471,13 +471,14 @@
       .nav-links.open { display: flex; }
       .hamburger { display: flex; }
       #hero { padding: 5rem 1.5rem 2rem; min-height: unset; }
-      .hero-bg img { object-position: 80% 10%; }
+      .hero-bg img { object-position: 92% 10%; }
       .hero-bg::after {
         background: linear-gradient(
           to right,
           rgba(255,241,191,0.98) 0%,
-          rgba(255,241,191,0.96) 50%,
-          rgba(255,241,191,0.55) 72%,
+          rgba(255,241,191,0.97) 45%,
+          rgba(255,241,191,0.85) 60%,
+          rgba(255,241,191,0.3) 82%,
           rgba(255,241,191,0) 100%
         );
       }
@@ -489,6 +490,10 @@
       .hero-pill { font-size: 0.55rem; padding: 0.3rem 0.7rem; }
       .hero-btns { flex-direction: column; gap: 0.5rem; }
       .btn-primary, .btn-outline { padding: 0.6rem 1.2rem; font-size: 0.65rem; width: auto; }
+      /* Consistent section typography */
+      .section-label { font-size: 0.6rem; }
+      .section-heading { font-size: 1.6rem; }
+      .section-sub { font-size: 0.82rem; }
       /* Stats: stack to 1 col on small screens */
       #stats { padding: 2rem 1.5rem; grid-template-columns: 1fr; }
       .stat-item { border-right: none; padding: 1rem 0; border-bottom: 1px solid rgba(255,241,191,0.12); }
