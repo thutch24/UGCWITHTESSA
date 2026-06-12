@@ -815,6 +815,7 @@
   // Intro video play/pause
   const introVideo = document.getElementById('introVideo');
   const introPlayBtn = document.getElementById('introPlayBtn');
+  introVideo.addEventListener('loadedmetadata', () => { introVideo.currentTime = 0.001; });
   const pauseSVG = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="2" width="4" height="14" fill="white"/><rect x="11" y="2" width="4" height="14" fill="white"/></svg>`;
   const playSVG = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="4,2 16,9 4,16" fill="white"/></svg>`;
   function toggleIntro() {
