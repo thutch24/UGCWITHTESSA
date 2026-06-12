@@ -471,7 +471,7 @@
       .nav-links.open { display: flex; }
       .hamburger { display: flex; }
       #hero { padding: 5rem 1.5rem 2rem; min-height: unset; }
-      .hero-bg img { object-position: 60% 15%; }
+      .hero-bg img { object-position: 60% 28%; }
       .hero-bg::after {
         background: linear-gradient(
           to right,
@@ -482,10 +482,10 @@
           rgba(255,241,191,0) 100%
         );
       }
-      .hero-text { max-width: 52%; }
+      .hero-text { max-width: 60%; }
       .hero-eyebrow { font-size: 0.55rem; margin-bottom: 0.6rem; }
-      .hero-name { font-size: 1.9rem; margin-bottom: 0.6rem; }
-      .hero-sub { font-size: 0.75rem; margin-bottom: 1rem; line-height: 1.5; }
+      .hero-name { font-size: 2.2rem; margin-bottom: 0.6rem; }
+      .hero-sub { font-size: 0.68rem; margin-bottom: 1rem; line-height: 1.5; }
       .hero-pills { gap: 0.3rem; margin-bottom: 1rem; }
       .hero-pill { font-size: 0.55rem; padding: 0.3rem 0.7rem; }
       .hero-btns { flex-direction: column; gap: 0.5rem; }
@@ -560,9 +560,9 @@
 <!-- INTRO -->
 <section id="intro">
   <div class="intro-video-wrap">
-    <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781225971/Intro_Video_ptpm7w.mov" playsinline preload="metadata" id="introVideo"></video>
-    <div class="intro-play-btn" id="introPlayBtn" onclick="toggleIntro()">
-      <span>▶</span>
+    <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781225971/Intro_Video_ptpm7w.mov" playsinline autoplay muted loop id="introVideo"></video>
+    <div class="intro-play-btn" id="introPlayBtn" onclick="toggleIntro()" style="opacity:0;">
+      <span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="4,2 16,9 4,16" fill="white"/></svg></span>
     </div>
   </div>
   <div class="intro-text">
@@ -624,7 +624,7 @@
       <div class="video-card" data-niche="family">
         <div class="card-media">
           <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226142/Tweetycam_Review_wkhse6.mov" playsinline preload="metadata"></video>
-          <div class="play-btn" onclick="playVideo(this)">▶</div>
+          <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Baby & Family</span>
             <span class="card-title">Tweetycam Review</span>
@@ -635,7 +635,7 @@
       <div class="video-card" data-niche="family">
         <div class="card-media">
           <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226147/Tweetycam_Testimonial_ysz3wc.mov" playsinline preload="metadata"></video>
-          <div class="play-btn" onclick="playVideo(this)">▶</div>
+          <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Baby & Family</span>
             <span class="card-title">Tweetycam Testimonial</span>
@@ -646,7 +646,7 @@
       <div class="video-card" data-niche="family">
         <div class="card-media">
           <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226035/Tweetycame_Accessory_Showcase_tyl671.mov" playsinline preload="metadata"></video>
-          <div class="play-btn" onclick="playVideo(this)">▶</div>
+          <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Baby & Family</span>
             <span class="card-title">Tweetycam Accessory Showcase</span>
@@ -658,7 +658,7 @@
       <div class="video-card" data-niche="wellness">
         <div class="card-media">
           <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226443/Moogoo_Tail_Swat_Spray_Review_q3vhcy.mp4" playsinline preload="metadata"></video>
-          <div class="play-btn" onclick="playVideo(this)">▶</div>
+          <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Wellness</span>
             <span class="card-title">MooGoo Tail Swat Spray Review</span>
@@ -669,7 +669,7 @@
       <div class="video-card" data-niche="wellness">
         <div class="card-media">
           <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781225958/Voomies_Product_Testimonial_a5coyi.mov" playsinline preload="metadata"></video>
-          <div class="play-btn" onclick="playVideo(this)">▶</div>
+          <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Wellness</span>
             <span class="card-title">Voomies Product Testimonial</span>
@@ -815,27 +815,31 @@
   // Intro video play/pause
   const introVideo = document.getElementById('introVideo');
   const introPlayBtn = document.getElementById('introPlayBtn');
-  introVideo.addEventListener('loadedmetadata', () => { introVideo.currentTime = 0.001; });
+  const pauseSVG = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="2" width="4" height="14" fill="white"/><rect x="11" y="2" width="4" height="14" fill="white"/></svg>`;
+  const playSVG = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="4,2 16,9 4,16" fill="white"/></svg>`;
   function toggleIntro() {
     if (introVideo.paused) {
       introVideo.play();
       introPlayBtn.style.opacity = '0';
     } else {
       introVideo.pause();
+      introPlayBtn.querySelector('span').innerHTML = playSVG;
       introPlayBtn.style.opacity = '1';
-      introPlayBtn.querySelector('span').textContent = '▶';
     }
   }
   introVideo.addEventListener('click', toggleIntro);
-  introVideo.addEventListener('ended', () => {
+  introVideo.addEventListener('pause', () => {
+    introPlayBtn.querySelector('span').innerHTML = playSVG;
     introPlayBtn.style.opacity = '1';
-    introPlayBtn.querySelector('span').textContent = '▶';
   });
 
   // First-frame thumbnail
   document.querySelectorAll('.card-media video').forEach(v => {
     v.addEventListener('loadedmetadata', () => { v.currentTime = 0.001; });
   });
+
+  const cardPlaySVG = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg>`;
+  const cardPauseSVG = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="1" width="3" height="12" fill="white"/><rect x="9" y="1" width="3" height="12" fill="white"/></svg>`;
 
   // Play / pause toggle — accepts btn or card element
   function playVideo(el) {
@@ -846,7 +850,7 @@
 
     if (!video.paused) {
       video.pause();
-      btn.textContent = '▶';
+      btn.innerHTML = cardPlaySVG;
       card.classList.remove('is-playing');
       return;
     }
@@ -857,20 +861,20 @@
         const v = c.querySelector('video');
         const b = c.querySelector('.play-btn');
         if (v) v.pause();
-        if (b) b.textContent = '▶';
+        if (b) b.innerHTML = cardPlaySVG;
         c.classList.remove('is-playing');
       }
     });
 
     video.play();
-    btn.textContent = '⏸';
+    btn.innerHTML = cardPauseSVG;
     card.classList.add('is-playing');
     video.addEventListener('ended', () => {
-      btn.textContent = '▶';
+      btn.innerHTML = cardPlaySVG;
       card.classList.remove('is-playing');
     }, { once: true });
     video.addEventListener('pause', () => {
-      btn.textContent = '▶';
+      btn.innerHTML = cardPlaySVG;
     }, { once: true });
   }
 
