@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tessa Hutchinson | UGC Creator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cocoa:  #6B4A38;
+      --yellow: #FFF1BF;
+      --blue:   #C1DBE8;
+      --oat:    #F2E8D9;
+      --white:  #ffffff;
+      --bg:     #FDFAF6;
+      --text:   #3D2C1E;
+      --mid:    #9C8070;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--cocoa);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 3rem;
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+    .nav-logo {
+      font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--yellow); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,241,191,0.6); font-size: 0.72rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--yellow); }
+    .nav-cta {
+      background: var(--yellow); color: var(--cocoa) !important;
+      padding: 0.45rem 1.1rem; border-radius: 2px;
+      font-weight: 700 !important; opacity: 1 !important;
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--yellow); border-radius: 2px; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 75vh;
+      display: flex; align-items: center;
+      padding: 6rem 5rem 4rem;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    }
+    /* gradient from left (opaque yellow-tinted) to transparent on right */
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(255,241,191,0.92) 0%,
+        rgba(255,241,191,0.85) 35%,
+        rgba(255,241,191,0.4) 60%,
+        rgba(255,241,191,0) 80%
+      );
+    }
+    .hero-text {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: flex-start;
+      max-width: 520px;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--cocoa); opacity: 0.7; margin-bottom: 1.2rem;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 800; line-height: 1.0;
+      color: var(--cocoa); margin-bottom: 1.2rem;
+    }
+    .hero-name em { font-style: italic; color: var(--cocoa); opacity: 0.65; }
+    .hero-sub {
+      font-size: 0.95rem; color: var(--cocoa); opacity: 0.8;
+      max-width: 400px; margin-bottom: 2rem; line-height: 1.7;
+    }
+    .hero-pills {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 2.2rem;
+    }
+    .hero-pill {
+      background: var(--blue); border: none;
+      color: var(--cocoa); font-size: 0.68rem; letter-spacing: 0.1em;
+      padding: 0.4rem 1rem; border-radius: 20px;
+      text-transform: uppercase; font-weight: 600;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--cocoa); color: var(--yellow);
+      padding: 0.85rem 2rem; border-radius: 2px; text-decoration: none;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #4d3326; }
+    .btn-outline {
+      background: transparent; color: var(--cocoa);
+      border: 1.5px solid var(--cocoa); opacity: 0.5;
+      padding: 0.85rem 2rem; border-radius: 2px; text-decoration: none;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .btn-outline:hover { opacity: 0.9; }
+
+    /* ── INTRO ── */
+    #intro {
+      background: var(--oat);
+      padding: 5rem 5rem 5rem 8rem;
+      display: grid; grid-template-columns: 1fr 1.2fr;
+      gap: 2.5rem; align-items: center;
+    }
+    .intro-video-wrap {
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+      aspect-ratio: 9/16;
+      max-height: 520px;
+      background: #1a1a1a;
+      position: relative;
+    }
+    .intro-video-wrap video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .intro-play-btn {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .intro-play-btn span {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(255,255,255,0.25); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.3rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .intro-play-btn:hover span { background: rgba(255,255,255,0.4); transform: scale(1.1); }
+    .intro-text { display: flex; flex-direction: column; gap: 1.2rem; }
+    .intro-text .section-label { text-align: left; }
+    .intro-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; line-height: 1.1; color: var(--cocoa);
+    }
+    .intro-text h2 em { font-style: italic; opacity: 0.65; }
+    .intro-text p { font-size: 0.95rem; color: var(--text); opacity: 0.75; line-height: 1.8; }
+    @media (max-width: 860px) {
+      #intro { grid-template-columns: 1fr; padding: 3.5rem 1.5rem; gap: 2rem; }
+      .intro-video-wrap { max-height: 420px; }
+    }
+
+    /* ── STATS ROW ── */
+    #stats {
+      background: var(--cocoa);
+      padding: 3rem 4rem;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+    }
+    .stat-item {
+      text-align: center; padding: 0 2rem;
+      border-right: 1px solid rgba(255,241,191,0.15);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 800;
+      color: var(--yellow); line-height: 1.1; display: block;
+    }
+    .stat-label {
+      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,241,191,0.5); margin-top: 0.3rem; display: block;
+    }
+
+    /* ── SECTION SHARED ── */
+    .section-label {
+      font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--mid); margin-bottom: 0.8rem;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800; color: var(--text); line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+    .section-sub {
+      font-size: 0.9rem; color: var(--mid); max-width: 480px; line-height: 1.7;
+    }
+    .section-header { margin-bottom: 3rem; }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { background: var(--blue); padding: 5rem 0 5rem 3rem; }
+    #portfolio .section-header { padding-right: 3rem; }
+    #portfolio .section-heading { color: var(--cocoa); }
+    #portfolio .section-label { color: rgba(107,74,56,0.5); }
+    #portfolio .section-sub { color: rgba(107,74,56,0.65); }
+
+    .filter-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .chip {
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.4rem 1rem; border-radius: 20px; cursor: pointer;
+      border: 1px solid rgba(107,74,56,0.25); color: rgba(107,74,56,0.65);
+      background: transparent; transition: all 0.2s; font-family: 'Inter', sans-serif;
+    }
+    .chip.active, .chip:hover {
+      background: var(--cocoa); color: var(--yellow); border-color: var(--cocoa);
+    }
+
+    .carousel-wrap { position: relative; }
+    .carousel-arrows {
+      display: flex; gap: 0.6rem; margin-bottom: 1.2rem;
+    }
+    .carousel-arrow {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(107,74,56,0.12); border: 1px solid rgba(107,74,56,0.2);
+      color: var(--cocoa); font-size: 0.9rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s; font-family: sans-serif;
+    }
+    .carousel-arrow:hover { background: var(--cocoa); color: var(--yellow); }
+    .carousel {
+      display: flex; gap: 1.2rem;
+      overflow-x: auto; overflow-y: visible;
+      scroll-snap-type: x mandatory;
+      padding: 3rem 4rem 4rem 0.5rem;
+      scrollbar-width: none;
+      width: 100%;
+    }
+    .carousel::-webkit-scrollbar { display: none; }
+
+    /* ── VIDEO CARDS (Pressbook style) ── */
+    .video-card {
+      scroll-snap-align: center; flex-shrink: 0;
+      width: 185px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+      position: relative;
+      transition: width 0.4s cubic-bezier(.22,.68,0,1.2), box-shadow 0.4s ease, transform 0.4s ease, opacity 0.4s ease;
+      cursor: pointer;
+      opacity: 0.72;
+      align-self: center;
+    }
+    /* Hover = featured. On mobile, is-active (scroll-centre) does the same job */
+    .video-card:hover,
+    .video-card.is-active,
+    .video-card.is-playing {
+      width: 220px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+      transform: translateY(-8px);
+      z-index: 3;
+      opacity: 1;
+    }
+    /* The video/thumbnail area — full card, no frame */
+    .card-media {
+      aspect-ratio: 9/16;
+      background: var(--oat);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-media video,
+    .card-media img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .card-media video { cursor: pointer; }
+    .card-media video::-webkit-media-controls { opacity: 0; transition: opacity 0.2s; }
+    .card-media video:hover::-webkit-media-controls { opacity: 1; }
+    /* Gradient footer inside the card */
+    .card-footer {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2.5rem 0.9rem 0.9rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
+      z-index: 1;
+      display: flex; flex-direction: column; gap: 0.3rem;
+    }
+    .card-niche {
+      display: inline-block; align-self: flex-start;
+      font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--cocoa); font-weight: 700;
+      background: var(--yellow);
+      padding: 0.2rem 0.55rem; border-radius: 20px;
+    }
+    .card-title {
+      font-size: 0.78rem; font-weight: 600;
+      color: #fff; line-height: 1.3;
+    }
+    /* Placeholder card */
+    .card-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.5rem; color: rgba(107,74,56,0.3);
+    }
+    .card-placeholder svg { width: 28px; height: 28px; opacity: 0.4; }
+    .card-placeholder span { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    /* Play button */
+    .play-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,0.22); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1rem; z-index: 2;
+      transition: background 0.2s, transform 0.2s, opacity 0.2s;
+      cursor: pointer;
+      opacity: 0;
+    }
+    .video-card:hover .play-btn { opacity: 1; background: rgba(255,255,255,0.38); transform: translate(-50%,-50%) scale(1.1); }
+
+    .portfolio-note {
+      font-size: 0.72rem; color: rgba(107,74,56,0.5);
+      margin-top: 1.5rem; padding-right: 3rem;
+      font-style: italic;
+    }
+
+    /* ── BRANDS ── */
+    #brands { background: var(--oat); padding: 3.5rem 0; overflow: hidden; }
+    .brands-label {
+      font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--mid); text-align: center; margin-bottom: 2rem;
+    }
+    .brands-track-wrap { overflow: hidden; }
+    .brands-track {
+      display: flex; gap: 2.5rem; align-items: center;
+      animation: scroll-brands 20s linear infinite;
+      width: max-content;
+    }
+    @keyframes scroll-brands {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .brand-logo {
+      background: rgba(107,74,56,0.07);
+      border: 1px solid rgba(107,74,56,0.12);
+      padding: 0.7rem 1.6rem; border-radius: 3px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(107,74,56,0.45);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .brand-logo-img {
+      height: 36px; flex-shrink: 0;
+      border-radius: 4px;
+      object-fit: contain;
+      opacity: 0.85;
+    }
+
+    /* ── PACKAGES ── */
+    #packages { background: var(--bg); padding: 5rem 4rem; }
+    .packages-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem; max-width: 860px; margin: 0 auto;
+    }
+    .pkg-card {
+      background: var(--white);
+      border: 1px solid rgba(107,74,56,0.1);
+      border-radius: 4px; padding: 2.2rem 1.8rem;
+      position: relative; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pkg-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.07); }
+    .pkg-card.featured {
+      background: var(--cocoa);
+      border-color: var(--cocoa);
+    }
+    .pkg-badge {
+      position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+      background: var(--yellow); color: var(--cocoa);
+      font-size: 0.6rem; font-weight: 800; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 0.25rem 0.9rem; border-radius: 20px;
+      white-space: nowrap;
+    }
+    .pkg-name {
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--mid); margin-bottom: 0.6rem;
+    }
+    .pkg-card.featured .pkg-name { color: rgba(255,241,191,0.5); }
+    .pkg-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 800; color: var(--text); line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .pkg-card.featured .pkg-price { color: var(--yellow); }
+    .pkg-per { font-size: 0.72rem; color: var(--mid); margin-bottom: 1.4rem; }
+    .pkg-card.featured .pkg-per { color: rgba(255,241,191,0.45); }
+    .pkg-items { list-style: none; margin-bottom: 1.8rem; }
+    .pkg-items li {
+      font-size: 0.82rem; color: var(--mid); padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(107,74,56,0.07);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .pkg-card.featured .pkg-items li { color: rgba(255,241,191,0.6); border-color: rgba(255,241,191,0.08); }
+    .pkg-items li::before { content: "✓"; font-size: 0.7rem; color: var(--cocoa); font-weight: 700; }
+    .pkg-card.featured .pkg-items li::before { color: var(--yellow); }
+    .pkg-btn {
+      display: block; text-align: center; text-decoration: none;
+      padding: 0.75rem; border-radius: 2px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      background: var(--oat); color: var(--cocoa);
+      transition: background 0.2s;
+    }
+    .pkg-btn:hover { background: var(--yellow); }
+    .pkg-card.featured .pkg-btn { background: var(--yellow); color: var(--cocoa); }
+    .pkg-card.featured .pkg-btn:hover { background: #fff; }
+
+    /* ── CTA ── */
+    #contact {
+      background: var(--yellow);
+      padding: 5.5rem 2rem; text-align: center;
+    }
+    #contact .section-label { color: rgba(107,74,56,0.45); }
+    #contact .section-heading { color: var(--cocoa); margin: 0 auto 0.8rem; max-width: 520px; }
+    #contact .section-sub { color: rgba(107,74,56,0.65); margin: 0 auto 2.5rem; }
+    .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: rgba(107,74,56,0.08); border: 1.5px solid rgba(107,74,56,0.2);
+      color: var(--cocoa); padding: 0.8rem 1.4rem; border-radius: 2px;
+      font-size: 0.75rem; font-weight: 600; text-decoration: none; letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+    .contact-link:hover { background: rgba(107,74,56,0.14); }
+    .contact-link.primary { background: var(--cocoa); color: var(--yellow); border-color: var(--cocoa); }
+    .contact-link.primary:hover { background: #4d3326; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--cocoa);
+      padding: 1.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 0.8rem;
+    }
+    .footer-logo {
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,241,191,0.35);
+    }
+    .footer-copy { font-size: 0.68rem; color: rgba(255,241,191,0.25); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 0.68rem; color: rgba(255,241,191,0.35);
+      text-decoration: none; letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--yellow); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 860px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--cocoa); flex-direction: column; padding: 1.2rem 1.5rem; gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      #hero { padding: 6rem 1.5rem 4rem; }
+      /* On mobile, add darker overlay so text stays readable over photo */
+      .hero-bg::after {
+        background: linear-gradient(
+          to bottom,
+          rgba(255,241,191,0.88) 0%,
+          rgba(255,241,191,0.75) 60%,
+          rgba(255,241,191,0.5) 100%
+        );
+      }
+      .hero-btns { flex-direction: column; align-items: flex-start; width: 100%; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+      /* Stats: stack to 1 col on small screens */
+      #stats { padding: 2rem 1.5rem; grid-template-columns: 1fr; }
+      .stat-item { border-right: none; padding: 1rem 0; border-bottom: 1px solid rgba(255,241,191,0.12); }
+      .stat-item:last-child { border-bottom: none; }
+      .stat-number { font-size: 2rem; }
+      /* Portfolio */
+      #portfolio { padding: 3.5rem 0 3.5rem 1.2rem; }
+      #portfolio .section-header { padding-right: 1.2rem; }
+      .portfolio-note { padding-right: 1.2rem; }
+      .filter-chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: none; }
+      .filter-chips::-webkit-scrollbar { display: none; }
+      .chip { flex-shrink: 0; }
+      .video-card { width: 135px; opacity: 0.7; }
+      .video-card.is-active { width: 210px; opacity: 1; }
+      /* Packages */
+      #packages { padding: 3.5rem 1.2rem; }
+      .packages-grid { grid-template-columns: 1fr; }
+      /* Contact */
+      #contact { padding: 4rem 1.5rem; }
+      .contact-links { flex-direction: column; align-items: center; }
+      .contact-link { width: 100%; max-width: 280px; justify-content: center; }
+      footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">UGC WITH TESSA</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#contact" class="nav-cta">Work With Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="hero image.jpeg" alt="" />
+  </div>
+  <div class="hero-text">
+    <p class="hero-eyebrow">Townsville, Australia · UGC Content Creator</p>
+    <h1 class="hero-name">Tessa<br><em>Hutchinson</em></h1>
+    <p class="hero-sub">Townsville-based UGC creator and busy mum. I make authentic, scroll-stopping content for brands that want to connect with real people. Product reviews, unboxings, tutorials, lifestyle. Real. Relatable. On-brief.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Lifestyle</span>
+      <span class="hero-pill">Baby & Family</span>
+      <span class="hero-pill">Wellness</span>
+      <span class="hero-pill">Home</span>
+      <span class="hero-pill">Tech</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-video-wrap">
+    <video src="Intro Video.mp4" playsinline preload="metadata" id="introVideo"></video>
+    <div class="intro-play-btn" id="introPlayBtn" onclick="toggleIntro()">
+      <span>▶</span>
+    </div>
+  </div>
+  <div class="intro-text">
+    <p class="section-label">What I Do</p>
+    <h2>I find the gaps in<br><em>your content.</em></h2>
+    <p>Most brands have a great product but content that isn't converting. I create engaging short-form video that keeps people watching and wanting more. I find what's missing from your feed and fill it with content that feels native, builds trust, and drives action.</p>
+    <ul style="list-style:none; display:flex; flex-direction:column; gap:0.7rem; margin:0.5rem 0 1.5rem;">
+      <li style="font-size:0.9rem; color:var(--text); opacity:0.8;">✦ Short-form video for paid ads & organic social</li>
+      <li style="font-size:0.9rem; color:var(--text); opacity:0.8;">✦ Product reviews, demos & unboxings</li>
+      <li style="font-size:0.9rem; color:var(--text); opacity:0.8;">✦ Talking head & testimonial formats</li>
+      <li style="font-size:0.9rem; color:var(--text); opacity:0.8;">✦ Lifestyle & routine integrations</li>
+      <li style="font-size:0.9rem; color:var(--text); opacity:0.8;">✦ Content that feels native, not like an ad</li>
+    </ul>
+    <a href="#portfolio" class="btn-primary" style="align-self:flex-start;">See My Work</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stat-item">
+    <span class="stat-number">5+ Years</span>
+    <span class="stat-label">Creating content</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">AU-Based</span>
+    <span class="stat-label">Townsville, Australia</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">100% UGC</span>
+    <span class="stat-label">Authentic & scroll-stopping</span>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-header">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-heading">My Work</h2>
+    <p class="section-sub">Scroll to explore. Click any video to watch.</p>
+  </div>
+
+  <div class="filter-chips">
+    <button class="chip active" data-filter="all">All</button>
+    <button class="chip" data-filter="lifestyle">Lifestyle</button>
+    <button class="chip" data-filter="family">Baby & Family</button>
+    <button class="chip" data-filter="wellness">Wellness</button>
+    <button class="chip" data-filter="home">Home</button>
+    <button class="chip" data-filter="tech">Tech</button>
+  </div>
+
+  <div class="carousel-arrows">
+    <button class="carousel-arrow" id="prevBtn">&#8592;</button>
+    <button class="carousel-arrow" id="nextBtn">&#8594;</button>
+  </div>
+  <div class="carousel-wrap">
+    <div class="carousel" id="carousel">
+
+      <!-- BABY & FAMILY -->
+      <div class="video-card" data-niche="family">
+        <div class="card-media">
+          <video src="Tweetycam Review.MOV" playsinline preload="metadata"></video>
+          <div class="play-btn" onclick="playVideo(this)">▶</div>
+          <div class="card-footer">
+            <span class="card-niche">Baby & Family</span>
+            <span class="card-title">Tweetycam Review</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card" data-niche="family">
+        <div class="card-media">
+          <video src="Tweetycam Testimonial.MOV" playsinline preload="metadata"></video>
+          <div class="play-btn" onclick="playVideo(this)">▶</div>
+          <div class="card-footer">
+            <span class="card-niche">Baby & Family</span>
+            <span class="card-title">Tweetycam Testimonial</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card" data-niche="family">
+        <div class="card-media">
+          <video src="Tweetycame Accessory Showcase.MOV" playsinline preload="metadata"></video>
+          <div class="play-btn" onclick="playVideo(this)">▶</div>
+          <div class="card-footer">
+            <span class="card-niche">Baby & Family</span>
+            <span class="card-title">Tweetycam Accessory Showcase</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WELLNESS -->
+      <div class="video-card" data-niche="wellness">
+        <div class="card-media">
+          <video src="Moogoo Tail Swat Spray Review.MP4" playsinline preload="metadata"></video>
+          <div class="play-btn" onclick="playVideo(this)">▶</div>
+          <div class="card-footer">
+            <span class="card-niche">Wellness</span>
+            <span class="card-title">MooGoo Tail Swat Spray Review</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card" data-niche="wellness">
+        <div class="card-media">
+          <video src="Voomies Product Testimonial.MOV" playsinline preload="metadata"></video>
+          <div class="play-btn" onclick="playVideo(this)">▶</div>
+          <div class="card-footer">
+            <span class="card-niche">Wellness</span>
+            <span class="card-title">Voomies Product Testimonial</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOME placeholder -->
+      <div class="video-card" data-niche="home">
+        <div class="card-media">
+          <div class="card-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.276A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+            <span>Coming soon</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-niche">Home</span>
+            <span class="card-title">Coming soon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TECH placeholder -->
+      <div class="video-card" data-niche="tech">
+        <div class="card-media">
+          <div class="card-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.276A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+            <span>Coming soon</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-niche">Tech</span>
+            <span class="card-title">Coming soon</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <p class="portfolio-note">* Tweetycam: paid collaboration. MooGoo &amp; Voomies: spec content created to demonstrate style.</p>
+</section>
+
+<!-- BRANDS -->
+<section id="brands">
+  <p class="brands-label">Brands I've worked with & love creating for</p>
+  <div class="brands-track-wrap">
+    <div class="brands-track" id="brandsTrack">
+      <img src="tweetycam-logo.svg" alt="Tweetycam" class="brand-logo-img">
+      <div class="brand-logo">More brands coming soon</div>
+      <img src="tweetycam-logo.svg" alt="Tweetycam" class="brand-logo-img">
+      <div class="brand-logo">More brands coming soon</div>
+      <!-- Duplicated for seamless loop -->
+      <img src="tweetycam-logo.svg" alt="Tweetycam" class="brand-logo-img">
+      <div class="brand-logo">More brands coming soon</div>
+      <img src="tweetycam-logo.svg" alt="Tweetycam" class="brand-logo-img">
+      <div class="brand-logo">More brands coming soon</div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="section-header" style="text-align:center; margin-bottom:3rem;">
+    <p class="section-label" style="text-align:center;">Packages</p>
+    <h2 class="section-heading" style="text-align:center; margin:0 auto 0.8rem;">Simple, Clear Pricing</h2>
+    <p class="section-sub" style="margin:0 auto; text-align:center;">All videos 30–60 sec, delivered as final edited MP4 within 5–7 business days. Includes 1 revision round. All prices AUD. Packages include organic social usage. Paid ad usage available as an add-on.</p>
+  </div>
+  <div class="packages-grid">
+
+    <!-- STARTER -->
+    <div class="pkg-card">
+      <p class="pkg-name">Starter</p>
+      <p class="pkg-price">$200</p>
+      <p class="pkg-per">1 video</p>
+      <ul class="pkg-items">
+        <li>1 × UGC video (30–60 sec)</li>
+        <li>1 revision round</li>
+        <li>6-month organic usage rights</li>
+        <li>Paid ad usage available as add-on</li>
+        <li>Best for: first collab or testing the fit</li>
+      </ul>
+      <a href="mailto:support@tjcreative.com.au" class="pkg-btn">Get Started</a>
+    </div>
+
+    <!-- STANDARD — FEATURED -->
+    <div class="pkg-card featured">
+      <div class="pkg-badge">Most Popular</div>
+      <p class="pkg-name">Standard</p>
+      <p class="pkg-price">$370</p>
+      <p class="pkg-per">2 videos</p>
+      <ul class="pkg-items">
+        <li>2 × UGC videos (30–60 sec)</li>
+        <li>1 revision round per video</li>
+        <li>6-month organic usage rights</li>
+        <li>Paid ad usage available as add-on</li>
+        <li>Best for: ongoing content & A/B testing</li>
+      </ul>
+      <a href="mailto:support@tjcreative.com.au" class="pkg-btn">Get Started</a>
+    </div>
+
+    <!-- CUSTOM -->
+    <div class="pkg-card">
+      <p class="pkg-name">Custom</p>
+      <p class="pkg-price">Let's chat</p>
+      <p class="pkg-per">tailored to your needs</p>
+      <ul class="pkg-items">
+        <li>3+ videos or monthly retainer</li>
+        <li>Photo add-ons available</li>
+        <li>Extended & global usage rights</li>
+        <li>Rush delivery available</li>
+      </ul>
+      <a href="mailto:support@tjcreative.com.au" class="pkg-btn">Get a Quote</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Work With Me</p>
+  <h2 class="section-heading">Let's make something<br><em style="font-family:'Playfair Display',serif; font-style:italic;">your audience loves.</em></h2>
+  <p class="section-sub">I'm currently taking on new brand partnerships. Reach out and let's chat about what you need.</p>
+  <div class="contact-links">
+    <a href="mailto:support@tjcreative.com.au" class="contact-link primary">✉ Email Me</a>
+    <a href="https://www.instagram.com/ugc.with.tessa" target="_blank" rel="noopener" class="contact-link">Instagram</a>
+    <a href="https://www.tiktok.com/@ugc.with.tessa" target="_blank" rel="noopener" class="contact-link">TikTok</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">UGC WITH TESSA · Townsville AU</span>
+  <div class="footer-links">
+    <a href="#portfolio">Work</a>
+    <a href="#packages">Packages</a>
+    <a href="mailto:support@tjcreative.com.au">Contact</a>
+  </div>
+  <span class="footer-copy">© 2025 Tessa Hutchinson</span>
+</footer>
+
+<script>
+  // Always start at top on load
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+
+  // Intro video play/pause
+  const introVideo = document.getElementById('introVideo');
+  const introPlayBtn = document.getElementById('introPlayBtn');
+  introVideo.addEventListener('loadedmetadata', () => { introVideo.currentTime = 0.001; });
+  function toggleIntro() {
+    if (introVideo.paused) {
+      introVideo.play();
+      introPlayBtn.style.opacity = '0';
+    } else {
+      introVideo.pause();
+      introPlayBtn.style.opacity = '1';
+      introPlayBtn.querySelector('span').textContent = '▶';
+    }
+  }
+  introVideo.addEventListener('click', toggleIntro);
+  introVideo.addEventListener('ended', () => {
+    introPlayBtn.style.opacity = '1';
+    introPlayBtn.querySelector('span').textContent = '▶';
+  });
+
+  // First-frame thumbnail
+  document.querySelectorAll('.card-media video').forEach(v => {
+    v.addEventListener('loadedmetadata', () => { v.currentTime = 0.001; });
+  });
+
+  // Play / pause toggle
+  function playVideo(btn) {
+    const media = btn.closest('.card-media');
+    const card = btn.closest('.video-card');
+    const video = media.querySelector('video');
+
+    if (!video.paused) {
+      video.pause();
+      btn.style.display = 'flex';
+      card.classList.remove('is-playing');
+      return;
+    }
+
+    // Pause + collapse all other cards
+    document.querySelectorAll('.video-card').forEach(c => {
+      if (c !== card) {
+        const v = c.querySelector('video');
+        if (v) { v.pause(); c.querySelector('.play-btn').style.display = 'flex'; }
+        c.classList.remove('is-playing');
+      }
+    });
+
+    video.play();
+    btn.textContent = '⏸';
+    btn.style.display = 'flex';
+    card.classList.add('is-playing');
+    video.addEventListener('ended', () => {
+      btn.textContent = '▶';
+      card.classList.remove('is-playing');
+    }, { once: true });
+    video.addEventListener('pause', () => {
+      btn.textContent = '▶';
+    }, { once: true });
+  }
+
+  // Nav scroll shadow
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+  // Mobile hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Carousel arrows
+  const carousel = document.getElementById('carousel');
+  const CARD_W = 170 + 16; // card width + gap
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    carousel.scrollBy({ left: -CARD_W, behavior: 'smooth' });
+  });
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    carousel.scrollBy({ left: CARD_W, behavior: 'smooth' });
+  });
+
+
+  // Portfolio filter chips
+  const chips = document.querySelectorAll('.chip');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.dataset.filter;
+      document.querySelectorAll('.video-card').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.niche === filter) ? 'block' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
