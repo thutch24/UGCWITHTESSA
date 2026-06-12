@@ -471,9 +471,15 @@
       .nav-links.open { display: flex; }
       .hamburger { display: flex; }
       #hero { padding: 7rem 1.5rem 4rem; min-height: 85vh; }
-      .hero-bg img { object-position: 70% top; }
+      .hero-bg img { object-position: 80% top; }
       .hero-bg::after {
-        background: rgba(255,241,191,0.93);
+        background: linear-gradient(
+          to right,
+          rgba(255,241,191,0.97) 0%,
+          rgba(255,241,191,0.92) 40%,
+          rgba(255,241,191,0.5) 65%,
+          rgba(255,241,191,0) 100%
+        );
       }
       .hero-text { max-width: 100%; }
       .hero-name { font-size: clamp(2.4rem, 10vw, 3.4rem); }
