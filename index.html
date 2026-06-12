@@ -471,7 +471,7 @@
       .nav-links.open { display: flex; }
       .hamburger { display: flex; }
       #hero { padding: 5rem 1.5rem 2rem; min-height: unset; }
-      .hero-bg img { object-position: 60% 42%; }
+      .hero-bg img { object-position: 60% 52%; }
       .hero-bg::after {
         background: linear-gradient(
           to right,
@@ -560,11 +560,10 @@
 <!-- INTRO -->
 <section id="intro">
   <div class="intro-video-wrap">
-    <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781225971/Intro_Video_ptpm7w.mov" playsinline autoplay muted id="introVideo"></video>
-    <div class="intro-play-btn" id="introPlayBtn" onclick="toggleIntro()" style="opacity:0;">
+    <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781225971/Intro_Video_ptpm7w.mov" playsinline preload="metadata" id="introVideo"></video>
+    <div class="intro-play-btn" id="introPlayBtn" onclick="toggleIntro()" style="opacity:1;">
       <span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="4,2 16,9 4,16" fill="white"/></svg></span>
     </div>
-    <button id="unmuteBtn" onclick="toggleMute()" style="position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,0.45);border:none;border-radius:20px;padding:6px 12px;color:#fff;font-size:0.65rem;font-family:Inter,sans-serif;letter-spacing:0.08em;cursor:pointer;z-index:3;">🔇 TAP FOR SOUND</button>
   </div>
   <div class="intro-text">
     <p class="section-label">What I Do</p>
@@ -833,11 +832,6 @@
     introPlayBtn.querySelector('span').innerHTML = playSVG;
     introPlayBtn.style.opacity = '1';
   });
-  const unmuteBtn = document.getElementById('unmuteBtn');
-  function toggleMute() {
-    introVideo.muted = !introVideo.muted;
-    unmuteBtn.textContent = introVideo.muted ? '🔇 TAP FOR SOUND' : '🔊 SOUND ON';
-  }
 
   // First-frame thumbnail
   document.querySelectorAll('.card-media video').forEach(v => {
