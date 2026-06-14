@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
     :root {
       --cocoa:  #6B4A38;
       --yellow: #FFF1BF;
@@ -18,10 +18,10 @@
       --text:   #3D2C1E;
       --mid:    #9C8070;
     }
- 
+
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
- 
+
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -50,7 +50,7 @@
     }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--yellow); border-radius: 2px; }
- 
+
     /* ── HERO ── */
     #hero {
       position: relative;
@@ -123,7 +123,7 @@
       transition: opacity 0.2s;
     }
     .btn-outline:hover { opacity: 0.9; }
- 
+
     /* ── INTRO ── */
     #intro {
       background: var(--oat);
@@ -168,7 +168,7 @@
       #intro { grid-template-columns: 1fr; padding: 3.5rem 1.5rem; gap: 2rem; }
       .intro-video-wrap { width: 62%; max-height: none; margin: 0 auto; }
     }
- 
+
     /* ── STATS ROW ── */
     #stats {
       background: var(--cocoa);
@@ -189,7 +189,7 @@
       font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
       color: rgba(255,241,191,0.5); margin-top: 0.3rem; display: block;
     }
- 
+
     /* ── SECTION SHARED ── */
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
@@ -205,14 +205,14 @@
       font-size: 0.9rem; color: var(--mid); max-width: 480px; line-height: 1.7;
     }
     .section-header { margin-bottom: 3rem; }
- 
+
     /* ── PORTFOLIO ── */
     #portfolio { background: var(--blue); padding: 5rem 0 5rem 3rem; }
     #portfolio .section-header { padding-right: 3rem; }
     #portfolio .section-heading { color: var(--cocoa); }
     #portfolio .section-label { color: rgba(107,74,56,0.5); }
     #portfolio .section-sub { color: rgba(107,74,56,0.65); }
- 
+
     .filter-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
     .chip {
       font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
@@ -223,7 +223,7 @@
     .chip.active, .chip:hover {
       background: var(--cocoa); color: var(--yellow); border-color: var(--cocoa);
     }
- 
+
     .carousel-wrap { position: relative; }
     .carousel-arrows {
       display: flex; gap: 0.6rem; margin-bottom: 1.2rem;
@@ -245,7 +245,7 @@
       width: 100%;
     }
     .carousel::-webkit-scrollbar { display: none; }
- 
+
     /* ── VIDEO CARDS (Pressbook style) ── */
     .video-card {
       scroll-snap-align: center; flex-shrink: 0;
@@ -329,13 +329,15 @@
       .video-card.is-playing .play-btn { opacity: 0; }
       .video-card.is-playing:active .play-btn { opacity: 0.85; }
     }
- 
+
     .portfolio-note {
       font-size: 0.72rem; color: rgba(107,74,56,0.5);
       margin-top: 1.5rem; padding-right: 3rem;
       font-style: italic;
     }
- 
+
+
+
     /* ── BRANDS ── */
     #brands { background: var(--oat); padding: 3.5rem 0; overflow: hidden; }
     .brands-label {
@@ -366,7 +368,7 @@
       object-fit: contain;
       opacity: 0.85;
     }
- 
+
     /* ── PACKAGES ── */
     #packages { background: var(--bg); padding: 5rem 4rem; }
     .packages-grid {
@@ -423,7 +425,7 @@
     .pkg-btn:hover { background: var(--yellow); }
     .pkg-card.featured .pkg-btn { background: var(--yellow); color: var(--cocoa); }
     .pkg-card.featured .pkg-btn:hover { background: #fff; }
- 
+
     /* ── CTA ── */
     #contact {
       background: var(--yellow);
@@ -443,7 +445,7 @@
     .contact-link:hover { background: rgba(107,74,56,0.14); }
     .contact-link.primary { background: var(--cocoa); color: var(--yellow); border-color: var(--cocoa); }
     .contact-link.primary:hover { background: #4d3326; }
- 
+
     /* ── FOOTER ── */
     footer {
       background: var(--cocoa);
@@ -463,7 +465,7 @@
       transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--yellow); }
- 
+
     /* ── MOBILE ── */
     @media (max-width: 860px) {
       nav { padding: 1rem 1.5rem; }
@@ -520,7 +522,7 @@
   </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo">UGC WITH TESSA</a>
@@ -529,11 +531,12 @@
   </button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#portfolio">Work</a></li>
+
     <li><a href="#packages">Packages</a></li>
     <li><a href="#contact" class="nav-cta">Work With Me</a></li>
   </ul>
 </nav>
- 
+
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg">
@@ -556,7 +559,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- INTRO -->
 <section id="intro">
   <div class="intro-video-wrap">
@@ -579,7 +582,7 @@
     <a href="#portfolio" class="btn-primary" style="align-self:flex-start;">See My Work</a>
   </div>
 </section>
- 
+
 <!-- STATS -->
 <section id="stats">
   <div class="stat-item">
@@ -595,7 +598,7 @@
     <span class="stat-label">Authentic & scroll-stopping</span>
   </div>
 </section>
- 
+
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="section-header">
@@ -603,7 +606,7 @@
     <h2 class="section-heading">My Work</h2>
     <p class="section-sub">Scroll to explore. Click any video to watch.</p>
   </div>
- 
+
   <div class="filter-chips">
     <button class="chip active" data-filter="all">All</button>
     <button class="chip" data-filter="lifestyle">Lifestyle</button>
@@ -612,14 +615,14 @@
     <button class="chip" data-filter="home">Home</button>
     <button class="chip" data-filter="tech">Tech</button>
   </div>
- 
+
   <div class="carousel-arrows">
     <button class="carousel-arrow" id="prevBtn">&#8592;</button>
     <button class="carousel-arrow" id="nextBtn">&#8594;</button>
   </div>
   <div class="carousel-wrap">
     <div class="carousel" id="carousel">
- 
+
       <!-- BABY & FAMILY -->
       <div class="video-card" data-niche="family">
         <div class="card-media">
@@ -631,7 +634,7 @@
           </div>
         </div>
       </div>
- 
+
       <div class="video-card" data-niche="family">
         <div class="card-media">
           <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226147/Tweetycam_Testimonial_ysz3wc.mov" playsinline preload="metadata"></video>
@@ -642,7 +645,7 @@
           </div>
         </div>
       </div>
- 
+
       <div class="video-card" data-niche="family">
         <div class="card-media">
           <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226035/Tweetycame_Accessory_Showcase_tyl671.mov" playsinline preload="metadata"></video>
@@ -653,7 +656,7 @@
           </div>
         </div>
       </div>
- 
+
       <!-- WELLNESS -->
       <div class="video-card" data-niche="wellness">
         <div class="card-media">
@@ -665,7 +668,7 @@
           </div>
         </div>
       </div>
- 
+
       <div class="video-card" data-niche="wellness">
         <div class="card-media">
           <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781225958/Voomies_Product_Testimonial_a5coyi.mov" playsinline preload="metadata"></video>
@@ -676,7 +679,7 @@
           </div>
         </div>
       </div>
- 
+
       <!-- HOME placeholder -->
       <div class="video-card" data-niche="home">
         <div class="card-media">
@@ -688,7 +691,7 @@
           </div>
         </div>
       </div>
- 
+
       <!-- TECH placeholder -->
       <div class="video-card" data-niche="tech">
         <div class="card-media">
@@ -702,11 +705,12 @@
           </div>
         </div>
       </div>
- 
+
     </div>
   </div>
 </section>
- 
+
+
 <!-- BRANDS -->
 <section id="brands">
   <p class="brands-label">Brands I've worked with & love creating for</p>
@@ -724,20 +728,19 @@
     </div>
   </div>
 </section>
- 
+
 <!-- PACKAGES -->
 <section id="packages">
   <div class="section-header" style="text-align:center; margin-bottom:3rem;">
     <p class="section-label" style="text-align:center;">Packages</p>
-    <h2 class="section-heading" style="text-align:center; margin:0 auto 0.8rem;">Simple, Clear Pricing</h2>
-    <p class="section-sub" style="margin:0 auto; text-align:center;">All videos 30–60 sec, delivered as final edited MP4 within 5–7 business days. Includes 1 revision round. All prices AUD. Packages include organic social usage. Paid ad usage available as an add-on.</p>
+    <h2 class="section-heading" style="text-align:center; margin:0 auto 0.8rem;">What I <em>Offer</em></h2>
+    <p class="section-sub" style="margin:0 auto; text-align:center;">All videos 30–60 sec, delivered as final edited MP4 within 5–7 business days. Includes 1 revision round. Packages include organic social usage. Paid ad usage available as an add-on.</p>
   </div>
   <div class="packages-grid">
- 
+
     <!-- STARTER -->
     <div class="pkg-card">
       <p class="pkg-name">Starter</p>
-      <p class="pkg-price">$200</p>
       <p class="pkg-per">1 video</p>
       <ul class="pkg-items">
         <li>1 × UGC video (30–60 sec)</li>
@@ -748,12 +751,11 @@
       </ul>
       <a href="mailto:hello@ugcwithtessa.com" class="pkg-btn">Get Started</a>
     </div>
- 
+
     <!-- STANDARD — FEATURED -->
     <div class="pkg-card featured">
       <div class="pkg-badge">Most Popular</div>
       <p class="pkg-name">Standard</p>
-      <p class="pkg-price">$370</p>
       <p class="pkg-per">2 videos</p>
       <ul class="pkg-items">
         <li>2 × UGC videos (30–60 sec)</li>
@@ -764,11 +766,10 @@
       </ul>
       <a href="mailto:hello@ugcwithtessa.com" class="pkg-btn">Get Started</a>
     </div>
- 
+
     <!-- CUSTOM -->
     <div class="pkg-card">
       <p class="pkg-name">Custom</p>
-      <p class="pkg-price">Let's chat</p>
       <p class="pkg-per">tailored to your needs</p>
       <ul class="pkg-items">
         <li>3+ videos or monthly retainer</li>
@@ -778,10 +779,10 @@
       </ul>
       <a href="mailto:hello@ugcwithtessa.com" class="pkg-btn">Get a Quote</a>
     </div>
- 
+
   </div>
 </section>
- 
+
 <!-- CONTACT -->
 <section id="contact">
   <p class="section-label">Work With Me</p>
@@ -793,7 +794,7 @@
     <a href="https://www.tiktok.com/@ugc.with.tessa" target="_blank" rel="noopener" class="contact-link" style="background:#C1DBE8;color:#3D2C1E;border-color:#C1DBE8;">TikTok</a>
   </div>
 </section>
- 
+
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo">UGC WITH TESSA · Townsville AU</span>
@@ -804,12 +805,12 @@
   </div>
   <span class="footer-copy">© 2025 Tessa Hutchinson</span>
 </footer>
- 
+
 <script>
   // Always start at top on load
   if (history.scrollRestoration) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
- 
+
   // Intro video play/pause
   const introVideo = document.getElementById('introVideo');
   const introPlayBtn = document.getElementById('introPlayBtn');
@@ -831,29 +832,29 @@
     introPlayBtn.querySelector('span').innerHTML = playSVG;
     introPlayBtn.style.opacity = '1';
   });
- 
+
   // First-frame thumbnail
   document.querySelectorAll('.card-media video').forEach(v => {
     v.addEventListener('loadedmetadata', () => { v.currentTime = 0.001; });
   });
- 
+
   const cardPlaySVG = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg>`;
   const cardPauseSVG = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="1" width="3" height="12" fill="white"/><rect x="9" y="1" width="3" height="12" fill="white"/></svg>`;
- 
+
   // Play / pause toggle — accepts btn or card element
   function playVideo(el) {
     const card = el.closest('.video-card') || el;
     const video = card.querySelector('video');
     const btn = card.querySelector('.play-btn');
     if (!video || !btn) return;
- 
+
     if (!video.paused) {
       video.pause();
       btn.innerHTML = cardPlaySVG;
       card.classList.remove('is-playing');
       return;
     }
- 
+
     // Pause + collapse all other cards
     document.querySelectorAll('.video-card').forEach(c => {
       if (c !== card) {
@@ -864,7 +865,7 @@
         c.classList.remove('is-playing');
       }
     });
- 
+
     video.play();
     btn.innerHTML = cardPauseSVG;
     card.classList.add('is-playing');
@@ -876,7 +877,7 @@
       btn.innerHTML = cardPlaySVG;
     }, { once: true });
   }
- 
+
   // Mobile: tap anywhere on card to play
   if (window.matchMedia('(hover: none)').matches) {
     document.querySelectorAll('.video-card').forEach(card => {
@@ -885,17 +886,17 @@
       });
     });
   }
- 
+
   // Nav scroll shadow
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
- 
+
   // Mobile hamburger
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
   hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
- 
+
   // Carousel arrows
   const carousel = document.getElementById('carousel');
   const CARD_W = 170 + 16; // card width + gap
@@ -905,8 +906,8 @@
   document.getElementById('nextBtn').addEventListener('click', () => {
     carousel.scrollBy({ left: CARD_W, behavior: 'smooth' });
   });
- 
- 
+
+
   // Portfolio filter chips
   const chips = document.querySelectorAll('.chip');
   chips.forEach(chip => {
@@ -922,4 +923,3 @@
 </script>
 </body>
 </html>
- 
