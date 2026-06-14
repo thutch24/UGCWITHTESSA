@@ -281,9 +281,9 @@
       position: absolute; inset: 0;
       width: 100%; height: 100%; object-fit: cover;
     }
-    .card-media video { cursor: pointer; }
-    .card-media video::-webkit-media-controls { opacity: 0; transition: opacity 0.2s; }
-    .card-media video:hover::-webkit-media-controls { opacity: 1; }
+    .card-media video { cursor: pointer; pointer-events: none; }
+    .card-media video::-webkit-media-controls { display: none; }
+    .card-media { cursor: pointer; }
     /* Gradient footer inside the card */
     .card-footer {
       position: absolute; bottom: 0; left: 0; right: 0;
@@ -878,14 +878,12 @@
     }, { once: true });
   }
 
-  // Mobile: tap anywhere on card to play
-  if (window.matchMedia('(hover: none)').matches) {
-    document.querySelectorAll('.video-card').forEach(card => {
-      card.addEventListener('click', e => {
-        if (!e.target.closest('.play-btn')) playVideo(card);
-      });
+  // Tap anywhere on card to play (all devices — video has pointer-events:none)
+  document.querySelectorAll('.video-card').forEach(card => {
+    card.addEventListener('click', e => {
+      if (!e.target.closest('.play-btn')) playVideo(card);
     });
-  }
+  });
 
   // Nav scroll shadow
   const nav = document.getElementById('nav');
