@@ -281,15 +281,18 @@
       position: absolute; inset: 0;
       width: 100%; height: 100%; object-fit: cover;
     }
-    .card-media video { cursor: pointer; pointer-events: none; }
-    .card-media video::-webkit-media-controls { display: none; }
-    .card-media { cursor: pointer; }
+    .card-media video { pointer-events: none; }
+    .card-media video::-webkit-media-controls { display: none !important; }
+    .card-media { cursor: pointer; position: relative; }
+    .card-media::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+    }
     /* Gradient footer inside the card */
     .card-footer {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 2.5rem 0.9rem 0.9rem;
       background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
-      z-index: 1;
+      z-index: 2;
       display: flex; flex-direction: column; gap: 0.3rem;
     }
     .card-niche {
@@ -563,7 +566,7 @@
 <!-- INTRO -->
 <section id="intro">
   <div class="intro-video-wrap">
-    <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781327513/New_Intro_uibhdn.mov" playsinline preload="metadata" id="introVideo"></video>
+    <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781327513/New_Intro_uibhdn.mov" playsinline webkit-playsinline preload="metadata" id="introVideo"></video>
     <div class="intro-play-btn" id="introPlayBtn" onclick="toggleIntro()" style="opacity:1;">
       <span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="4,2 16,9 4,16" fill="white"/></svg></span>
     </div>
@@ -626,7 +629,7 @@
       <!-- BABY & FAMILY -->
       <div class="video-card" data-niche="family">
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226142/Tweetycam_Review_wkhse6.mov" playsinline preload="metadata"></video>
+          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226142/Tweetycam_Review_wkhse6.mov" playsinline webkit-playsinline preload="metadata"></video>
           <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Baby & Family</span>
@@ -637,7 +640,7 @@
 
       <div class="video-card" data-niche="family">
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226147/Tweetycam_Testimonial_ysz3wc.mov" playsinline preload="metadata"></video>
+          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226147/Tweetycam_Testimonial_ysz3wc.mov" playsinline webkit-playsinline preload="metadata"></video>
           <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Baby & Family</span>
@@ -648,7 +651,7 @@
 
       <div class="video-card" data-niche="family">
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226035/Tweetycame_Accessory_Showcase_tyl671.mov" playsinline preload="metadata"></video>
+          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226035/Tweetycame_Accessory_Showcase_tyl671.mov" playsinline webkit-playsinline preload="metadata"></video>
           <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Baby & Family</span>
@@ -660,7 +663,7 @@
       <!-- WELLNESS -->
       <div class="video-card" data-niche="wellness">
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226443/Moogoo_Tail_Swat_Spray_Review_q3vhcy.mp4" playsinline preload="metadata"></video>
+          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226443/Moogoo_Tail_Swat_Spray_Review_q3vhcy.mp4" playsinline webkit-playsinline preload="metadata"></video>
           <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Wellness</span>
@@ -671,7 +674,7 @@
 
       <div class="video-card" data-niche="wellness">
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781225958/Voomies_Product_Testimonial_a5coyi.mov" playsinline preload="metadata"></video>
+          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781225958/Voomies_Product_Testimonial_a5coyi.mov" playsinline webkit-playsinline preload="metadata"></video>
           <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Wellness</span>
@@ -683,7 +686,7 @@
       <!-- HOME placeholder -->
       <div class="video-card" data-niche="home">
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781338370/0613_c451vr.mov" playsinline preload="metadata" loop></video>
+          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781338370/0613_c451vr.mov" playsinline webkit-playsinline preload="metadata" loop></video>
           <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Home</span>
