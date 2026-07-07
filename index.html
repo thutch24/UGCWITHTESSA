@@ -116,50 +116,31 @@
     }
     .btn-outline:hover { opacity: 0.9; }
 
-    /* ── INTRO ── */
-    #intro {
-      background: var(--bg);
-      padding: 5rem 5rem 5rem 8rem;
-      display: grid; grid-template-columns: 1fr 1.2fr;
-      gap: 2.5rem; align-items: center;
+    /* ── INTRO — full-width landscape video ── */
+    #intro { background: #1a0d07; padding: 0; display: block; }
+    .intro-video-container { position: relative; width: 100%; aspect-ratio: 16/9; }
+    .intro-video-container iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      display: block; border: none;
     }
-    .intro-video-wrap {
-      border-radius: 18px; overflow: hidden;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.15);
-      aspect-ratio: 9/16;
-      max-height: 520px;
-      background: #1a1a1a;
-      position: relative;
+
+    /* ── FORMATS — What I Do (expanded) ── */
+    #formats { background: var(--oat); padding: 5rem 4rem; }
+    .formats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin: 2.5rem 0;
     }
-    .intro-video-wrap video {
-      width: 100%; height: 100%; object-fit: cover; display: block;
+    .format-card {
+      background: var(--white); border: 1px solid rgba(107,74,56,0.1);
+      border-radius: 8px; padding: 1.5rem 1.3rem;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .intro-play-btn {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-    }
-    .intro-play-btn span {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: rgba(255,255,255,0.25); backdrop-filter: blur(8px);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 1.3rem;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .intro-play-btn:hover span { background: rgba(255,255,255,0.4); transform: scale(1.1); }
-    .intro-text { display: flex; flex-direction: column; gap: 1.2rem; }
-    .intro-text .section-label { text-align: left; }
-    .intro-text h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800; line-height: 1.1; color: var(--cocoa);
-    }
-    .intro-text h2 em { font-style: italic; color: var(--pink-text); opacity: 1; }
-    .intro-text p { font-size: 0.95rem; color: var(--text); opacity: 0.75; line-height: 1.8; }
-    @media (max-width: 860px) {
-      #intro { grid-template-columns: 1fr; padding: 3.5rem 1.5rem; gap: 2rem; }
-      .intro-video-wrap { width: 62%; max-height: none; margin: 0 auto; }
-    }
+    .format-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
+    .format-card.highlight { background: var(--pink); border-color: rgba(237,181,186,0.35); }
+    .format-icon { font-size: 1.4rem; margin-bottom: 0.7rem; display: block; color: var(--cocoa); }
+    .format-card.highlight .format-icon { color: var(--pink-text); }
+    .format-name { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cocoa); margin-bottom: 0.4rem; }
+    .format-desc { font-size: 0.84rem; color: var(--mid); line-height: 1.6; }
 
     /* ── STATS ROW ── */
     #stats {
@@ -493,6 +474,12 @@
       .section-label { font-size: 0.6rem; }
       .section-heading { font-size: 1.6rem; }
       .section-sub { font-size: 0.82rem; }
+      /* Formats */
+      #formats { padding: 3.5rem 1.5rem; }
+      .formats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1.8rem 0; }
+      .format-card { padding: 1.1rem 1rem; }
+      .format-name { font-size: 0.65rem; }
+      .format-desc { font-size: 0.78rem; }
       /* Stats: stack to 1 col on small screens */
       #stats { padding: 2rem 1.5rem; grid-template-columns: 1fr; }
       .stat-item { border-right: none; padding: 1rem 0; border-bottom: 1px solid rgba(255,241,191,0.12); }
@@ -515,6 +502,10 @@
       .contact-links { flex-direction: column; align-items: center; }
       .contact-link { width: 100%; max-width: 280px; justify-content: center; }
       footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+    }
+    @media (max-width: 480px) {
+      .formats-grid { grid-template-columns: 1fr; }
+      #formats { padding: 3rem 1.2rem; }
     }
   </style>
 </head>
@@ -557,27 +548,56 @@
   </div>
 </section>
 
-<!-- INTRO -->
+<!-- INTRO — full-width landscape video -->
 <section id="intro">
-  <div class="intro-video-wrap">
-    <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781327513/New_Intro_uibhdn.mov" playsinline webkit-playsinline preload="metadata" id="introVideo"></video>
-    <div class="intro-play-btn" id="introPlayBtn" onclick="toggleIntro()" style="opacity:1;">
-      <span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="4,2 16,9 4,16" fill="white"/></svg></span>
+  <div class="intro-video-container">
+    <iframe
+      src="https://www.youtube.com/embed/xKO0aBYARBI?rel=0&modestbranding=1"
+      frameborder="0"
+      allowfullscreen
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+    </iframe>
+  </div>
+</section>
+
+<!-- FORMATS — What I Do (expanded for brands) -->
+<section id="formats">
+  <p class="section-label">What I Do</p>
+  <h2 class="section-heading">I find the gaps in <em>your content.</em></h2>
+  <p class="section-sub">Most brands have a great product but content that isn't converting. I create engaging short-form video that keeps people watching and wanting more — content that feels native, builds trust, and drives action.</p>
+  <div class="formats-grid">
+    <div class="format-card">
+      <span class="format-icon">◎</span>
+      <p class="format-name">Talking Head</p>
+      <p class="format-desc">Direct-to-camera reviews and testimonials that feel genuinely authentic and build trust fast.</p>
+    </div>
+    <div class="format-card">
+      <span class="format-icon">◈</span>
+      <p class="format-name">Unboxing</p>
+      <p class="format-desc">First-reaction unboxing content that captures real excitement your audience can feel.</p>
+    </div>
+    <div class="format-card">
+      <span class="format-icon">◐</span>
+      <p class="format-name">B-roll</p>
+      <p class="format-desc">Clean, aesthetic product footage for ads, reels, and brand content that stops the scroll.</p>
+    </div>
+    <div class="format-card">
+      <span class="format-icon">◑</span>
+      <p class="format-name">Lifestyle Integration</p>
+      <p class="format-desc">Product woven naturally into daily life — feels real, not staged, and resonates with real people.</p>
+    </div>
+    <div class="format-card">
+      <span class="format-icon">◒</span>
+      <p class="format-name">Tutorial / Demo</p>
+      <p class="format-desc">Step-by-step demos that answer objections and give your audience the confidence to buy.</p>
+    </div>
+    <div class="format-card highlight">
+      <span class="format-icon">✦</span>
+      <p class="format-name">Paid Ad Ready</p>
+      <p class="format-desc">All content delivered ad-ready. Usage rights available as an add-on for paid campaigns.</p>
     </div>
   </div>
-  <div class="intro-text">
-    <p class="section-label">What I Do</p>
-    <h2>I find the gaps in<br><em>your content.</em></h2>
-    <p>Most brands have a great product but content that isn't converting. I create engaging short-form video that keeps people watching and wanting more. I find what's missing from your feed and fill it with content that feels native, builds trust, and drives action.</p>
-    <ul style="list-style:none; display:flex; flex-direction:column; gap:0.7rem; margin:0.5rem 0 1.5rem;">
-      <li style="font-size:0.9rem; color:var(--text); opacity:0.8;">✦ Short-form video for paid ads & organic social</li>
-      <li style="font-size:0.9rem; color:var(--text); opacity:0.8;">✦ Product reviews, demos & unboxings</li>
-      <li style="font-size:0.9rem; color:var(--text); opacity:0.8;">✦ Talking head & testimonial formats</li>
-      <li style="font-size:0.9rem; color:var(--text); opacity:0.8;">✦ Lifestyle & routine integrations</li>
-      <li style="font-size:0.9rem; color:var(--text); opacity:0.8;">✦ Content that feels native, not like an ad</li>
-    </ul>
-    <a href="#portfolio" class="btn-primary" style="align-self:flex-start;">See My Work</a>
-  </div>
+  <a href="#portfolio" class="btn-primary">See My Work</a>
 </section>
 
 <!-- STATS -->
@@ -621,24 +641,24 @@
     <div class="carousel" id="carousel">
 
       <!-- BABY & FAMILY -->
-      <div class="video-card" data-niche="family">
+      <div class="video-card" data-niche="family" data-yt="PjEEixWLO0U" data-label="Baby &amp; Family" data-card-title="Tweetycam Accessory Showcase">
         <span class="card-style">Talking Head · Lifestyle</span>
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226035/Tweetycame_Accessory_Showcase_tyl671.mov" playsinline webkit-playsinline preload="metadata"></video>
-          <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
+          <img src="https://img.youtube.com/vi/PjEEixWLO0U/hqdefault.jpg" alt="Tweetycam Accessory Showcase">
+          <div class="play-btn"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
-            <span class="card-niche">Baby & Family</span>
+            <span class="card-niche">Baby &amp; Family</span>
             <span class="card-title">Tweetycam Accessory Showcase</span>
           </div>
         </div>
       </div>
 
       <!-- WELLNESS -->
-      <div class="video-card" data-niche="wellness">
+      <div class="video-card" data-niche="wellness" data-yt="Wy80jDBXCyw" data-label="Wellness" data-card-title="MooGoo Tail Swat Spray">
         <span class="card-style">Talking Head · Lifestyle</span>
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781226443/Moogoo_Tail_Swat_Spray_Review_q3vhcy.mp4" playsinline webkit-playsinline preload="metadata"></video>
-          <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
+          <img src="https://img.youtube.com/vi/Wy80jDBXCyw/hqdefault.jpg" alt="MooGoo Tail Swat Spray">
+          <div class="play-btn"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Wellness</span>
             <span class="card-title">MooGoo Tail Swat Spray</span>
@@ -646,11 +666,11 @@
         </div>
       </div>
 
-      <div class="video-card" data-niche="wellness">
+      <div class="video-card" data-niche="wellness" data-yt="f3cinI4zpIw" data-label="Wellness" data-card-title="Voomies Product Testimonial">
         <span class="card-style">Lifestyle</span>
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781225958/Voomies_Product_Testimonial_a5coyi.mov" playsinline webkit-playsinline preload="metadata"></video>
-          <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
+          <img src="https://img.youtube.com/vi/f3cinI4zpIw/hqdefault.jpg" alt="Voomies Product Testimonial">
+          <div class="play-btn"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Wellness</span>
             <span class="card-title">Voomies Product Testimonial</span>
@@ -659,11 +679,11 @@
       </div>
 
       <!-- HOME -->
-      <div class="video-card" data-niche="home">
+      <div class="video-card" data-niche="home" data-yt="X-iWhYpGtjc" data-label="Home" data-card-title="Shark Steam &amp; Scrub Mop">
         <span class="card-style">Lifestyle</span>
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781338370/0613_c451vr.mov" playsinline webkit-playsinline preload="metadata" loop></video>
-          <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
+          <img src="https://img.youtube.com/vi/X-iWhYpGtjc/hqdefault.jpg" alt="Shark Steam &amp; Scrub Mop">
+          <div class="play-btn"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Home</span>
             <span class="card-title">Shark Steam &amp; Scrub Mop</span>
@@ -672,11 +692,11 @@
       </div>
 
       <!-- TECH -->
-      <div class="video-card" data-niche="tech">
+      <div class="video-card" data-niche="tech" data-yt="LJlV_sAZH6s" data-label="Tech" data-card-title="iPhone Unboxing">
         <span class="card-style">Unboxing</span>
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781480273/0613_1_dlil4t.mov" playsinline webkit-playsinline preload="metadata"></video>
-          <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
+          <img src="https://img.youtube.com/vi/LJlV_sAZH6s/hqdefault.jpg" alt="iPhone Unboxing">
+          <div class="play-btn"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Tech</span>
             <span class="card-title">iPhone Unboxing</span>
@@ -685,11 +705,11 @@
       </div>
 
       <!-- FASHION -->
-      <div class="video-card" data-niche="fashion">
+      <div class="video-card" data-niche="fashion" data-yt="GvcoRhVWLY4" data-label="Fashion" data-card-title="Kmart Slippers">
         <span class="card-style">B-roll · Organic</span>
         <div class="card-media">
-          <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1781914084/SnapInsta.to_AQPCN7tLm-DXwtw6YthJpY8t8TYbfVtvR_jMEjReV-wwHnbRLz_HaLgZ1pVBv3THyxdohsYQ_euU7F-sPkMRL0no8uN1pEoL56MsxDI_qryaqe.mp4" playsinline webkit-playsinline preload="metadata"></video>
-          <div class="play-btn" onclick="playVideo(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
+          <img src="https://img.youtube.com/vi/GvcoRhVWLY4/hqdefault.jpg" alt="Kmart Slippers">
+          <div class="play-btn"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
           <div class="card-footer">
             <span class="card-niche">Fashion</span>
             <span class="card-title">Kmart Slippers</span>
@@ -801,83 +821,8 @@
 </footer>
 
 <script>
-  // Always start at top on load
   if (history.scrollRestoration) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
-
-  // Intro video play/pause
-  const introVideo = document.getElementById('introVideo');
-  const introPlayBtn = document.getElementById('introPlayBtn');
-  introVideo.addEventListener('loadedmetadata', () => { introVideo.currentTime = 0.001; });
-  const pauseSVG = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="2" width="4" height="14" fill="white"/><rect x="11" y="2" width="4" height="14" fill="white"/></svg>`;
-  const playSVG = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="4,2 16,9 4,16" fill="white"/></svg>`;
-  function toggleIntro() {
-    if (introVideo.paused) {
-      introVideo.play();
-      introPlayBtn.style.opacity = '0';
-    } else {
-      introVideo.pause();
-      introPlayBtn.querySelector('span').innerHTML = playSVG;
-      introPlayBtn.style.opacity = '1';
-    }
-  }
-  introVideo.addEventListener('click', toggleIntro);
-  introVideo.addEventListener('pause', () => {
-    introPlayBtn.querySelector('span').innerHTML = playSVG;
-    introPlayBtn.style.opacity = '1';
-  });
-
-  // First-frame thumbnail
-  document.querySelectorAll('.card-media video').forEach(v => {
-    v.addEventListener('loadedmetadata', () => { v.currentTime = 0.001; });
-  });
-
-  const cardPlaySVG = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="3,1 13,7 3,13" fill="white"/></svg>`;
-  const cardPauseSVG = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="1" width="3" height="12" fill="white"/><rect x="9" y="1" width="3" height="12" fill="white"/></svg>`;
-
-  // Play / pause toggle — accepts btn or card element
-  function playVideo(el) {
-    const card = el.closest('.video-card') || el;
-    const video = card.querySelector('video');
-    const btn = card.querySelector('.play-btn');
-    if (!video || !btn) return;
-
-    if (!video.paused) {
-      video.pause();
-      btn.innerHTML = cardPlaySVG;
-      card.classList.remove('is-playing');
-      return;
-    }
-
-    // Pause + collapse all other cards
-    document.querySelectorAll('.video-card').forEach(c => {
-      if (c !== card) {
-        const v = c.querySelector('video');
-        const b = c.querySelector('.play-btn');
-        if (v) v.pause();
-        if (b) b.innerHTML = cardPlaySVG;
-        c.classList.remove('is-playing');
-      }
-    });
-
-    video.play();
-    btn.innerHTML = cardPauseSVG;
-    card.classList.add('is-playing');
-    video.addEventListener('ended', () => {
-      btn.innerHTML = cardPlaySVG;
-      card.classList.remove('is-playing');
-    }, { once: true });
-    video.addEventListener('pause', () => {
-      btn.innerHTML = cardPlaySVG;
-    }, { once: true });
-  }
-
-  // Tap anywhere on card to play (all devices — video has pointer-events:none)
-  document.querySelectorAll('.video-card').forEach(card => {
-    card.addEventListener('click', e => {
-      if (!e.target.closest('.play-btn')) playVideo(card);
-    });
-  });
 
   // Nav scroll shadow
   const nav = document.getElementById('nav');
@@ -889,22 +834,50 @@
   hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
+  // Reset a card to its thumbnail state
+  function resetCard(card) {
+    const ytId = card.dataset.yt;
+    const label = card.dataset.label;
+    const title = card.dataset.cardTitle;
+    card.querySelector('.card-media').innerHTML = `
+      <img src="https://img.youtube.com/vi/${ytId}/hqdefault.jpg" alt="${title}">
+      <div class="play-btn"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="3,1 13,7 3,13" fill="white"/></svg></div>
+      <div class="card-footer">
+        <span class="card-niche">${label}</span>
+        <span class="card-title">${title}</span>
+      </div>`;
+    card.classList.remove('is-playing');
+  }
+
+  // Play YouTube video inline; tap again to collapse back to thumbnail
+  function playCard(card) {
+    if (card.classList.contains('is-playing')) { resetCard(card); return; }
+    document.querySelectorAll('.video-card.is-playing').forEach(c => resetCard(c));
+    const ytId = card.dataset.yt;
+    card.querySelector('.card-media').innerHTML = `
+      <iframe
+        src="https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1"
+        frameborder="0" allowfullscreen
+        allow="autoplay; encrypted-media"
+        style="position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:18px;">
+      </iframe>`;
+    card.classList.add('is-playing');
+  }
+
+  document.querySelectorAll('.video-card').forEach(card => {
+    card.addEventListener('click', () => playCard(card));
+  });
+
   // Carousel arrows
   const carousel = document.getElementById('carousel');
-  const CARD_W = 170 + 16; // card width + gap
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    carousel.scrollBy({ left: -CARD_W, behavior: 'smooth' });
-  });
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    carousel.scrollBy({ left: CARD_W, behavior: 'smooth' });
-  });
-
+  const CARD_W = 185 + 16;
+  document.getElementById('prevBtn').addEventListener('click', () => carousel.scrollBy({ left: -CARD_W, behavior: 'smooth' }));
+  document.getElementById('nextBtn').addEventListener('click', () => carousel.scrollBy({ left: CARD_W, behavior: 'smooth' }));
 
   // Portfolio filter chips
-  const chips = document.querySelectorAll('.chip');
-  chips.forEach(chip => {
+  document.querySelectorAll('.chip').forEach(chip => {
     chip.addEventListener('click', () => {
-      chips.forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       const filter = chip.dataset.filter;
       document.querySelectorAll('.video-card').forEach(card => {
