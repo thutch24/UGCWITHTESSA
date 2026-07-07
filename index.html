@@ -116,13 +116,35 @@
     }
     .btn-outline:hover { opacity: 0.9; }
 
-    /* ── INTRO — full-width landscape video ── */
-    #intro { background: #1a0d07; padding: 0; display: block; }
-    .intro-video-container { position: relative; width: 100%; aspect-ratio: 16/9; }
-    .intro-video-container iframe {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      display: block; border: none;
+    /* ── INTRO — centred landscape video ── */
+    #intro {
+      background: var(--bg);
+      padding: 4rem 2rem;
+      display: flex; justify-content: center; align-items: center;
     }
+    .intro-video-container {
+      width: 100%; max-width: 780px;
+      aspect-ratio: 16/9;
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      background: #1a1a1a; position: relative;
+    }
+    .intro-video-container video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .intro-play-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .intro-play-overlay span {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(255,255,255,0.22); backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .intro-play-overlay:hover span { background: rgba(255,255,255,0.38); transform: scale(1.08); }
 
     /* ── FORMATS — What I Do (expanded) ── */
     #formats { background: var(--oat); padding: 5rem 4rem; }
@@ -260,9 +282,6 @@
     .card-media video { pointer-events: none; }
     .card-media video::-webkit-media-controls { display: none !important; }
     .card-media { cursor: pointer; position: relative; }
-    .card-media::before {
-      content: ''; position: absolute; inset: 0; z-index: 1;
-    }
     /* Gradient footer inside the card */
     .card-footer {
       position: absolute; bottom: 0; left: 0; right: 0;
@@ -548,15 +567,13 @@
   </div>
 </section>
 
-<!-- INTRO — full-width landscape video -->
+<!-- INTRO — centred landscape video -->
 <section id="intro">
   <div class="intro-video-container">
-    <iframe
-      src="https://www.youtube.com/embed/xKO0aBYARBI?rel=0&modestbranding=1"
-      frameborder="0"
-      allowfullscreen
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-    </iframe>
+    <video src="https://res.cloudinary.com/dmf06r1mq/video/upload/v1783392762/0622_wgtbbj.mov" playsinline webkit-playsinline preload="metadata" id="introVideo"></video>
+    <div class="intro-play-overlay" id="introOverlay">
+      <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polygon points="5,2 18,10 5,18" fill="white"/></svg></span>
+    </div>
   </div>
 </section>
 
@@ -824,6 +841,25 @@
   if (history.scrollRestoration) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
 
+  // Intro video
+  const introVideo = document.getElementById('introVideo');
+  const introOverlay = document.getElementById('introOverlay');
+  if (introVideo) {
+    introVideo.addEventListener('loadedmetadata', () => { introVideo.currentTime = 0.001; });
+    introOverlay.addEventListener('click', () => {
+      introVideo.play();
+      introOverlay.style.opacity = '0';
+      introOverlay.style.pointerEvents = 'none';
+    });
+    introVideo.addEventListener('pause', () => {
+      introOverlay.style.opacity = '1';
+      introOverlay.style.pointerEvents = 'auto';
+    });
+    introVideo.addEventListener('click', () => {
+      if (!introVideo.paused) { introVideo.pause(); }
+    });
+  }
+
   // Nav scroll shadow
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
@@ -856,9 +892,9 @@
     const ytId = card.dataset.yt;
     card.querySelector('.card-media').innerHTML = `
       <iframe
-        src="https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1"
+        src="https://www.youtube.com/embed/${ytId}?rel=0&modestbranding=1&playsinline=1"
         frameborder="0" allowfullscreen
-        allow="autoplay; encrypted-media"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         style="position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:18px;">
       </iframe>`;
     card.classList.add('is-playing');
