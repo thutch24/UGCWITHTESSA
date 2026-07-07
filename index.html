@@ -154,23 +154,18 @@
     }
     .intro-play-overlay:hover span { background: rgba(255,255,255,0.38); transform: scale(1.08); }
 
-    /* ── FORMATS — What I Do (expanded) ── */
-    #formats { background: var(--oat); padding: 5rem 4rem; }
-    .formats-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1rem; margin: 2.5rem 0;
+    /* ── FORMATS — What I Do ── */
+    #formats { background: var(--oat); padding: 3rem 4rem; }
+    .formats-badges {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 2rem;
     }
-    .format-card {
-      background: var(--white); border: 1px solid rgba(107,74,56,0.1);
-      border-radius: 8px; padding: 1rem 1rem;
-      transition: transform 0.2s, box-shadow 0.2s;
+    .format-badge {
+      background: var(--white); border: 1px solid rgba(107,74,56,0.15);
+      border-radius: 100px; padding: 0.4rem 0.95rem;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--cocoa);
+      white-space: nowrap;
     }
-    .format-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
-    .format-card.highlight { background: var(--pink); border-color: rgba(237,181,186,0.35); }
-    .format-icon { font-size: 1.1rem; margin-bottom: 0.4rem; display: block; color: var(--cocoa); }
-    .format-card.highlight .format-icon { color: var(--pink-text); }
-    .format-name { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cocoa); margin-bottom: 0.3rem; }
-    .format-desc { font-size: 0.78rem; color: var(--mid); line-height: 1.5; }
 
     /* ── STATS ROW ── */
     #stats {
@@ -502,11 +497,8 @@
       .section-heading { font-size: 1.6rem; }
       .section-sub { font-size: 0.82rem; }
       /* Formats */
-      #formats { padding: 3.5rem 1.5rem; }
-      .formats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1.8rem 0; }
-      .format-card { padding: 1.1rem 1rem; }
-      .format-name { font-size: 0.65rem; }
-      .format-desc { font-size: 0.78rem; }
+      #formats { padding: 2.5rem 1.5rem; }
+      .formats-badges { margin: 1.2rem 0 1.8rem; }
       /* Stats: stack to 1 col on small screens */
       #stats { padding: 2rem 1.5rem; grid-template-columns: 1fr; }
       .stat-item { border-right: none; padding: 1rem 0; border-bottom: 1px solid rgba(255,241,191,0.12); }
@@ -531,8 +523,7 @@
       footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
     }
     @media (max-width: 480px) {
-      .formats-grid { grid-template-columns: 1fr; }
-      #formats { padding: 3rem 1.2rem; }
+      #formats { padding: 2rem 1.2rem; }
     }
   </style>
 </head>
@@ -593,37 +584,13 @@
   <p class="section-label">What I Do</p>
   <h2 class="section-heading">I find the gaps in <em>your content.</em></h2>
   <p class="section-sub">Most brands have a great product but content that isn't converting. I create engaging short-form video that keeps people watching and wanting more — content that feels native, builds trust, and drives action. Here's what I can create for you:</p>
-  <div class="formats-grid">
-    <div class="format-card">
-      <span class="format-icon">◎</span>
-      <p class="format-name">Talking Head</p>
-      <p class="format-desc">Direct-to-camera reviews and testimonials that feel genuinely authentic and build trust fast.</p>
-    </div>
-    <div class="format-card">
-      <span class="format-icon">◈</span>
-      <p class="format-name">Unboxing</p>
-      <p class="format-desc">First-reaction unboxing content that captures real excitement your audience can feel.</p>
-    </div>
-    <div class="format-card">
-      <span class="format-icon">◐</span>
-      <p class="format-name">B-roll</p>
-      <p class="format-desc">Clean, aesthetic product footage for ads, reels, and brand content that stops the scroll.</p>
-    </div>
-    <div class="format-card">
-      <span class="format-icon">◑</span>
-      <p class="format-name">Lifestyle Integration</p>
-      <p class="format-desc">Product woven naturally into daily life — feels real, not staged, and resonates with real people.</p>
-    </div>
-    <div class="format-card">
-      <span class="format-icon">◒</span>
-      <p class="format-name">Tutorial / Demo</p>
-      <p class="format-desc">Step-by-step demos that answer objections and give your audience the confidence to buy.</p>
-    </div>
-    <div class="format-card">
-      <span class="format-icon">✦</span>
-      <p class="format-name">Voiceover</p>
-      <p class="format-desc">Clean b-roll paired with a natural voiceover — great for brands that want a polished, non-talking-head style.</p>
-    </div>
+  <div class="formats-badges">
+    <span class="format-badge">Talking Head</span>
+    <span class="format-badge">Unboxing</span>
+    <span class="format-badge">B-roll</span>
+    <span class="format-badge">Lifestyle Integration</span>
+    <span class="format-badge">Tutorial / Demo</span>
+    <span class="format-badge">Voiceover</span>
   </div>
   <a href="#portfolio" class="btn-primary">See My Work</a>
 </section>
