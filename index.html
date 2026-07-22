@@ -100,6 +100,18 @@
       text-transform: uppercase; font-weight: 600;
     }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-socials {
+      display: flex; gap: 0.75rem; margin-top: 1.4rem; align-items: center;
+    }
+    .hero-social-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.7); border: 1px solid rgba(107,74,56,0.15);
+      color: var(--cocoa); text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-social-link:hover { background: var(--yellow); transform: translateY(-2px); }
+    .hero-social-link svg { width: 17px; height: 17px; fill: var(--cocoa); }
     .btn-primary {
       background: var(--cocoa); color: var(--yellow);
       padding: 0.85rem 2rem; border-radius: 2px; text-decoration: none;
@@ -495,6 +507,9 @@
       .hero-pills { gap: 0.3rem; margin-bottom: 1rem; }
       .hero-pill { font-size: 0.55rem; padding: 0.3rem 0.7rem; }
       .hero-btns { flex-direction: column; gap: 0.5rem; }
+      .hero-socials { margin-top: 1rem; gap: 0.6rem; }
+      .hero-social-link { width: 34px; height: 34px; }
+      .hero-social-link svg { width: 15px; height: 15px; }
       .btn-primary, .btn-outline { padding: 0.6rem 1.2rem; font-size: 0.65rem; width: auto; }
       /* Consistent section typography */
       .section-label { font-size: 0.6rem; }
@@ -566,6 +581,17 @@
     <div class="hero-btns">
       <a href="#portfolio" class="btn-primary">View My Work</a>
       <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-socials">
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@ugc.with.tessa" target="_blank" rel="noopener" class="hero-social-link" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:hello@ugcwithtessa.com" class="hero-social-link" aria-label="Email">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -640,6 +666,17 @@
     <div class="carousel" id="carousel">
 
       <!-- BABY & FAMILY -->
+      <div class="video-card" data-niche="family" data-yt="wfybjHmP44c" data-label="Baby &amp; Family" data-card-title="Bubs Bond Terry Romper">
+        <span class="card-style">Talking Head</span>
+        <div class="card-media">
+          <img src="https://img.youtube.com/vi/wfybjHmP44c/maxresdefault.jpg" alt="Bubs Bond Terry Romper">
+          <div class="card-footer">
+            <span class="card-niche">Baby &amp; Family</span>
+            <span class="card-title">Bubs Bond Terry Romper</span>
+          </div>
+        </div>
+      </div>
+
       <div class="video-card" data-niche="family" data-yt="PjEEixWLO0U" data-label="Baby &amp; Family" data-card-title="Tweetycam Accessory Showcase">
         <span class="card-style">Talking Head · Lifestyle</span>
         <div class="card-media">
