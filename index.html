@@ -243,7 +243,7 @@
   .pkg-note { font-size: 0.72rem; color: var(--mid); text-align: center; margin-top: 1.5rem; }
 
   /* ── ABOUT ── */
-  .about-mobile-img { display: none; }
+  .about-mobile-img { display: none !important; }
   #about {
     min-height: 70vh; position: relative;
     background: url('https://res.cloudinary.com/dmf06r1mq/image/upload/v1781225889/hero_image_wbmy7z.jpg') center right/cover no-repeat;
@@ -319,11 +319,10 @@
     #packages { padding: 3.5rem 1.5rem; }
     .pkg-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
     /* About */
-    /* About — stacked on mobile */
-    #about { background: none; min-height: unset; display: block; }
+    #about { min-height: 620px; background-position: center top; display: flex; align-items: flex-end; }
     #about::before { display: none; }
-    .about-mobile-img { display: block; width: 100%; max-height: 420px; object-fit: cover; object-position: center top; }
-    .about-inner { padding: 2.5rem 1.5rem; background: var(--oat); }
+    .about-mobile-img { display: none !important; }
+    .about-inner { padding: 2rem 1.5rem; width: 100%; background: rgba(242,232,217,0.88); backdrop-filter: blur(2px); }
     .about-copy { max-width: 100%; }
     /* Contact */
     #contact { padding: 3.5rem 1.5rem; }
@@ -358,7 +357,7 @@
     .packages-header .section-h2 { font-size: 1.6rem; }
     .pkg-grid { max-width: 100%; }
     /* About */
-    .about-mobile-img { max-height: 360px; }
+    #about { min-height: 600px; }
     .about-tags { gap: 0.4rem; }
     .about-tag { font-size: 0.6rem; }
     /* Contact */
@@ -490,103 +489,103 @@
     </div>
     <div class="video-grid" id="videoGrid">
 
-      <div class="vcard" data-niche="family" data-yt="vOcsG5KDBS0">
+      <div class="vcard" data-niche="family" data-yt="vOcsG5KDBS0" data-style="B-roll" data-brand="Bubs Bond" data-product="Organic B-roll">
         <img src="https://img.youtube.com/vi/vOcsG5KDBS0/maxresdefault.jpg" alt="Bubs Bond B-roll">
-        <span class="vcard-style">B-roll · Organic</span>
+        <span class="vcard-style">B-roll</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Baby & Family</span>
-          <span class="vcard-title">Bubs Bond · B-roll</span>
+          <span class="vcard-title">Bubs Bond · Organic B-roll</span>
         </div>
       </div>
 
-      <div class="vcard" data-niche="family" data-yt="wfybjHmP44c">
+      <div class="vcard" data-niche="family" data-yt="wfybjHmP44c" data-style="Talking Head" data-brand="Bubs Bond" data-product="Terry Romper">
         <img src="https://img.youtube.com/vi/wfybjHmP44c/maxresdefault.jpg" alt="Bubs Bond Terry Romper">
         <span class="vcard-style">Talking Head</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Baby & Family</span>
-          <span class="vcard-title">Bubs Bond Terry Romper</span>
+          <span class="vcard-title">Bubs Bond · Terry Romper</span>
         </div>
       </div>
 
-      <div class="vcard" data-niche="family" data-yt="PjEEixWLO0U">
+      <div class="vcard" data-niche="family" data-yt="PjEEixWLO0U" data-style="Talking Head" data-brand="Tweetycam" data-product="Accessory Showcase">
         <img src="https://img.youtube.com/vi/PjEEixWLO0U/maxresdefault.jpg" alt="Tweetycam">
-        <span class="vcard-style">Talking Head · Lifestyle</span>
+        <span class="vcard-style">Talking Head</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Baby & Family</span>
-          <span class="vcard-title">Tweetycam Accessory Showcase</span>
+          <span class="vcard-title">Tweetycam · Accessory Showcase</span>
         </div>
       </div>
 
-      <div class="vcard" data-niche="wellness" data-yt="Wy80jDBXCyw">
+      <div class="vcard" data-niche="wellness" data-yt="Wy80jDBXCyw" data-style="Talking Head" data-brand="MooGoo" data-product="Tail Swat Spray">
         <img src="https://img.youtube.com/vi/Wy80jDBXCyw/maxresdefault.jpg" alt="MooGoo">
-        <span class="vcard-style">Talking Head · Lifestyle</span>
+        <span class="vcard-style">Talking Head</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Wellness</span>
-          <span class="vcard-title">MooGoo Tail Swat Spray</span>
+          <span class="vcard-title">MooGoo · Tail Swat Spray</span>
         </div>
       </div>
 
-      <div class="vcard" data-niche="wellness" data-yt="f3cinI4zpIw">
+      <div class="vcard" data-niche="wellness" data-yt="f3cinI4zpIw" data-style="Lifestyle" data-brand="Voomies" data-product="Testimonial">
         <img src="https://img.youtube.com/vi/f3cinI4zpIw/maxresdefault.jpg" alt="Voomies">
         <span class="vcard-style">Lifestyle</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Wellness</span>
-          <span class="vcard-title">Voomies Product Testimonial</span>
+          <span class="vcard-title">Voomies · Testimonial</span>
         </div>
       </div>
 
-      <div class="vcard" data-niche="home" data-yt="X-iWhYpGtjc">
+      <div class="vcard" data-niche="home" data-yt="X-iWhYpGtjc" data-style="Lifestyle" data-brand="Shark" data-product="Steam & Scrub Mop">
         <img src="https://img.youtube.com/vi/X-iWhYpGtjc/maxresdefault.jpg" alt="Shark Mop">
         <span class="vcard-style">Lifestyle</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Home</span>
-          <span class="vcard-title">Shark Steam & Scrub Mop</span>
+          <span class="vcard-title">Shark · Steam & Scrub Mop</span>
         </div>
       </div>
 
-      <div class="vcard" data-niche="tech" data-yt="LJlV_sAZH6s">
+      <div class="vcard" data-niche="tech" data-yt="LJlV_sAZH6s" data-style="Unboxing" data-brand="Apple" data-product="iPhone Unboxing">
         <img src="https://img.youtube.com/vi/LJlV_sAZH6s/maxresdefault.jpg" alt="iPhone Unboxing">
         <span class="vcard-style">Unboxing</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Tech</span>
-          <span class="vcard-title">iPhone Unboxing</span>
+          <span class="vcard-title">Apple · iPhone Unboxing</span>
         </div>
       </div>
 
-      <div class="vcard" data-niche="fashion" data-yt="0czCCrn7J0I">
+      <div class="vcard" data-niche="fashion" data-yt="0czCCrn7J0I" data-style="Unboxing" data-brand="Essential Beauty" data-product="Unboxing">
         <img src="https://img.youtube.com/vi/0czCCrn7J0I/maxresdefault.jpg" alt="Essential Beauty">
         <span class="vcard-style">Unboxing</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Fashion</span>
-          <span class="vcard-title">Essential Beauty Unboxing</span>
+          <span class="vcard-title">Essential Beauty · Unboxing</span>
         </div>
       </div>
 
-      <div class="vcard" data-niche="fashion" data-yt="In1jpOU2ZyY">
+      <div class="vcard" data-niche="fashion" data-yt="In1jpOU2ZyY" data-style="B-roll" data-brand="BIG W" data-product="Pyjama Set">
         <img src="https://img.youtube.com/vi/In1jpOU2ZyY/maxresdefault.jpg" alt="BIG W Pyjama Set">
-        <span class="vcard-style">B-roll · Voiceover</span>
+        <span class="vcard-style">B-roll</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Fashion</span>
-          <span class="vcard-title">BIG W Pyjama Set</span>
+          <span class="vcard-title">BIG W · Pyjama Set</span>
         </div>
       </div>
 
-      <div class="vcard" data-niche="fashion" data-yt="GvcoRhVWLY4">
+      <div class="vcard" data-niche="fashion" data-yt="GvcoRhVWLY4" data-style="B-roll" data-brand="Kmart" data-product="Slippers">
         <img src="https://img.youtube.com/vi/GvcoRhVWLY4/maxresdefault.jpg" alt="Kmart Slippers">
-        <span class="vcard-style">B-roll · Organic</span>
+        <span class="vcard-style">B-roll</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Fashion</span>
-          <span class="vcard-title">Kmart Slippers</span>
+          <span class="vcard-title">Kmart · Slippers</span>
         </div>
       </div>
 
@@ -746,15 +745,15 @@
   // Portfolio: play on click
   function resetCard(card) {
     const yt = card.dataset.yt;
-    const niche = card.dataset.niche;
-    const title = card.querySelector('.vcard-title').textContent;
-    const style = card.querySelector('.vcard-style').textContent;
+    const style = card.dataset.style || card.querySelector('.vcard-style')?.textContent || '';
+    const niche = card.querySelector('.vcard-niche')?.textContent || '';
+    const title = card.querySelector('.vcard-title')?.textContent || '';
     card.innerHTML = `
       <img src="https://img.youtube.com/vi/${yt}/maxresdefault.jpg" alt="${title}">
       <span class="vcard-style">${style}</span>
       <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
       <div class="vcard-footer">
-        <span class="vcard-niche">${card.querySelector('.vcard-niche').textContent}</span>
+        <span class="vcard-niche">${niche}</span>
         <span class="vcard-title">${title}</span>
       </div>`;
     card.classList.remove('is-playing');
