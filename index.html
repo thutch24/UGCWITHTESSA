@@ -179,7 +179,7 @@
   }
   .vcard-style {
     position: absolute; top: 10px; left: 10px;
-    background: var(--yellow); color: var(--cocoa);
+    background: var(--pink); color: var(--cocoa);
     font-size: 0.52rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
     padding: 0.22rem 0.6rem; border-radius: 100px;
   }
@@ -318,12 +318,13 @@
     #packages { padding: 3.5rem 1.5rem; }
     .pkg-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
     /* About */
-    #about { min-height: unset; height: 420px; background-position: center right; background-size: cover; }
-    #about::before { background: linear-gradient(to right, rgba(242,232,217,0.97) 40%, rgba(242,232,217,0.15) 75%, transparent 100%); }
-    .about-inner { padding: 2.5rem 1.5rem; height: 100%; display: flex; align-items: center; }
-    .about-copy { max-width: 58%; }
-    .about-copy .section-sub { font-size: 0.8rem; margin: 0.7rem 0 1rem; }
-    .about-tags { margin-bottom: 1rem; }
+    #about { min-height: unset; height: 360px; background-position: 70% center; background-size: cover; }
+    #about::before { background: linear-gradient(to right, rgba(242,232,217,1) 45%, rgba(242,232,217,0.6) 65%, transparent 85%); }
+    .about-inner { padding: 2rem 1.5rem; height: 100%; display: flex; align-items: center; }
+    .about-copy { max-width: 52%; }
+    .about-copy .section-sub { display: none; }
+    .about-tags { display: none; }
+    .about-copy .btn-primary { font-size: 0.65rem; padding: 0.75rem 1.2rem; white-space: nowrap; }
     .about-copy { max-width: 100%; }
     /* Contact */
     #contact { padding: 3.5rem 1.5rem; }
@@ -358,10 +359,8 @@
     .packages-header .section-h2 { font-size: 1.6rem; }
     .pkg-grid { max-width: 100%; }
     /* About */
-    #about { height: 380px; }
-    .about-copy { max-width: 62%; }
-    .about-copy .section-sub { display: none; }
-    .about-tags { display: none; }
+    #about { height: 340px; background-position: 72% center; }
+    .about-copy { max-width: 55%; }
     .about-tags { gap: 0.4rem; }
     .about-tag { font-size: 0.6rem; }
     /* Contact */
