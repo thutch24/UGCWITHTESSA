@@ -45,13 +45,9 @@
 
   /* ── HERO ── */
   #hero {
-    min-height: 100vh; position: relative;
-    background: url('https://res.cloudinary.com/dmf06r1mq/image/upload/v1781225889/hero_image_wbmy7z.jpg') center/cover no-repeat;
+    min-height: 100vh; position: relative; background: var(--bg);
   }
-  #hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to right, rgba(253,250,246,0.96) 45%, rgba(253,250,246,0.55) 100%);
-  }
+  #hero-noop {
   .hero-inner {
     position: relative; z-index: 1;
     padding: 100px 3rem 5rem;
@@ -241,8 +237,8 @@
   /* ── ABOUT ── */
   #about { background: var(--oat); padding: 6rem 3rem; }
   .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .about-img { border-radius: 20px; overflow: hidden; aspect-ratio: 4/5; background: var(--pink); }
-  .about-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-img { border-radius: 20px; overflow: hidden; background: var(--oat); }
+  .about-img img { width: 100%; height: auto; display: block; }
   .about-copy .section-sub { font-size: 0.9rem; color: var(--mid); line-height: 1.8; margin: 1.2rem 0 2rem; }
   .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
   .about-tag { background: var(--yellow); color: var(--cocoa); font-size: 0.65rem; font-weight: 600; padding: 0.35rem 0.9rem; border-radius: 100px; }
@@ -280,7 +276,6 @@
     .mobile-nav.open { display: flex; }
     .mobile-nav a { font-size: 0.9rem; color: var(--text); text-decoration: none; padding: 0.4rem 0; }
     .mobile-nav .nav-cta-btn { text-align: center; padding: 0.8rem; }
-    #hero::before { background: linear-gradient(to bottom, rgba(253,250,246,0.97) 50%, rgba(253,250,246,0.75) 100%); }
     .hero-inner { grid-template-columns: 1fr; padding: 90px 1.5rem 4rem; gap: 2.5rem; }
     .hero-right { order: -1; }
     .hero-h1 { font-size: 2rem; }
@@ -298,7 +293,7 @@
     .pkg-grid { grid-template-columns: 1fr; }
     #about { padding: 4rem 1.5rem; }
     .about-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .about-img { max-height: 300px; }
+    .about-img { max-width: 420px; }
     #contact { padding: 4rem 1.5rem; }
     footer { flex-direction: column; align-items: flex-start; gap: 0.8rem; padding: 1.5rem; }
   }
@@ -550,11 +545,7 @@
         <div class="fbadge"><span class="fbadge-icon">✦</span><span class="fbadge-label">Voiceover</span></div>
       </div>
       <a href="mailto:hello@ugcwithtessa.com" class="btn-primary" style="margin-top:2rem; display:inline-block;">Get In Touch</a>
-    </div>
-    <div class="formats-video">
-      <img src="https://img.youtube.com/vi/PjEEixWLO0U/maxresdefault.jpg" alt="Sample UGC video">
-    </div>
-  </div>
+    </div></div>
 </section>
 
 <!-- PACKAGES -->
