@@ -15,7 +15,7 @@
     --oat: #F2E8D9; --pink: #FAE8E8; --pink-text: #EDB5BA;
     --bg: #FDFAF6; --text: #3D2C1E; --mid: #9C8070; --white: #FFFFFF;
   }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
   body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
   /* ── NAV ── */
@@ -318,13 +318,15 @@
     #packages { padding: 3.5rem 1.5rem; }
     .pkg-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
     /* About */
-    #about { min-height: unset; height: 360px; background-position: 70% center; background-size: cover; }
-    #about::before { background: linear-gradient(to right, rgba(242,232,217,1) 45%, rgba(242,232,217,0.6) 65%, transparent 85%); }
-    .about-inner { padding: 2rem 1.5rem; height: 100%; display: flex; align-items: center; }
-    .about-copy { max-width: 52%; }
+    #about { min-height: unset; height: 360px; background-position: 72% center; background-size: cover; }
+    #about::before { background: linear-gradient(to right, rgba(242,232,217,1) 48%, rgba(242,232,217,0.5) 68%, transparent 88%); }
+    .about-inner { padding: 2.5rem 1.5rem; height: 100%; display: flex; align-items: flex-start; }
+    .about-copy { max-width: 50%; display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .about-copy .section-label-sm { margin-bottom: 0; }
+    .about-copy .section-h2 { font-size: 1.5rem; margin-bottom: 0; }
     .about-copy .section-sub { display: none; }
     .about-tags { display: none; }
-    .about-copy .btn-primary { font-size: 0.65rem; padding: 0.75rem 1.2rem; white-space: nowrap; }
+    .about-copy .btn-primary { font-size: 0.65rem; padding: 0.7rem 1.1rem; white-space: nowrap; display: inline-block; margin-top: 0.5rem; }
     .about-copy { max-width: 100%; }
     /* Contact */
     #contact { padding: 3.5rem 1.5rem; }
@@ -359,8 +361,7 @@
     .packages-header .section-h2 { font-size: 1.6rem; }
     .pkg-grid { max-width: 100%; }
     /* About */
-    #about { height: 340px; background-position: 72% center; }
-    .about-copy { max-width: 55%; }
+    #about { height: 320px; background-position: 74% center; }
     .about-tags { gap: 0.4rem; }
     .about-tag { font-size: 0.6rem; }
     /* Contact */
