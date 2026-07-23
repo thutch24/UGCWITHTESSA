@@ -243,6 +243,7 @@
   .pkg-note { font-size: 0.72rem; color: var(--mid); text-align: center; margin-top: 1.5rem; }
 
   /* ── ABOUT ── */
+  .about-mobile-img { display: none; }
   #about {
     min-height: 70vh; position: relative;
     background: url('https://res.cloudinary.com/dmf06r1mq/image/upload/v1781225889/hero_image_wbmy7z.jpg') center right/cover no-repeat;
@@ -318,15 +319,11 @@
     #packages { padding: 3.5rem 1.5rem; }
     .pkg-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
     /* About */
-    #about { min-height: unset; height: 360px; background-position: 72% center; background-size: cover; }
-    #about::before { background: linear-gradient(to right, rgba(242,232,217,1) 48%, rgba(242,232,217,0.5) 68%, transparent 88%); }
-    .about-inner { padding: 2.5rem 1.5rem; height: 100%; display: flex; align-items: flex-start; }
-    .about-copy { max-width: 50%; display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-    .about-copy .section-label-sm { margin-bottom: 0; }
-    .about-copy .section-h2 { font-size: 1.5rem; margin-bottom: 0; }
-    .about-copy .section-sub { display: none; }
-    .about-tags { display: none; }
-    .about-copy .btn-primary { font-size: 0.65rem; padding: 0.7rem 1.1rem; white-space: nowrap; display: inline-block; margin-top: 0.5rem; }
+    /* About — stacked on mobile */
+    #about { background: none; min-height: unset; display: block; }
+    #about::before { display: none; }
+    .about-mobile-img { display: block; width: 100%; max-height: 420px; object-fit: cover; object-position: center top; }
+    .about-inner { padding: 2.5rem 1.5rem; background: var(--oat); }
     .about-copy { max-width: 100%; }
     /* Contact */
     #contact { padding: 3.5rem 1.5rem; }
@@ -361,7 +358,7 @@
     .packages-header .section-h2 { font-size: 1.6rem; }
     .pkg-grid { max-width: 100%; }
     /* About */
-    #about { height: 320px; background-position: 74% center; }
+    .about-mobile-img { max-height: 360px; }
     .about-tags { gap: 0.4rem; }
     .about-tag { font-size: 0.6rem; }
     /* Contact */
@@ -672,12 +669,13 @@
 
 <!-- ABOUT -->
 <section id="about">
+  <img src="https://res.cloudinary.com/dmf06r1mq/image/upload/v1781225889/hero_image_wbmy7z.jpg" alt="Tessa" class="about-mobile-img">
   <div class="about-inner">
     <div class="about-copy">
       <span class="section-label-sm">About Me</span>
       <h2 class="section-h2">Hi, I'm <em>Tessa.</em></h2>
-      <p class="section-sub">Townsville-based UGC creator and busy mum. I understand what real people want to see  because I am one. I make content that feels authentic, stops the scroll, and actually drives action for your brand.</p>
-      <p class="section-sub" style="margin-top:-0.5rem;">I work directly with brands to understand their brief, their customer, and their goals  then I create content that delivers.</p>
+      <p class="section-sub">Townsville-based UGC creator and busy mum. I understand what real people want to see, because I am one. I make content that feels authentic, stops the scroll, and actually drives action for your brand.</p>
+      <p class="section-sub" style="margin-top:-0.5rem;">I work directly with brands to understand their brief, their customer, and their goals, then I create content that delivers.</p>
       <div class="about-tags">
         <span class="about-tag">Baby & Family</span>
         <span class="about-tag">Wellness</span>
