@@ -198,12 +198,6 @@
   }
   .vcard:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.22); }
   .vcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .vcard.logo-card { cursor: pointer; background: #fff; border-radius: 18px; border: 1px solid rgba(107,74,56,.1); }
-  .vcard.logo-card img {
-    inset: 43% auto auto 50%; width: 72%; height: auto;
-    transform: translate(-50%,-50%); object-fit: contain;
-    clip-path: inset(2px 0 0);
-  }
   .vcard-overlay {
     position: absolute; inset: 0;
     background: linear-gradient(to top, rgba(61,44,30,0.85) 0%, rgba(61,44,30,0.2) 50%, transparent 100%);
@@ -627,8 +621,8 @@
         </div>
       </div>
 
-      <div class="vcard logo-card" data-niche="fashion" data-yt="5HKaf8M096Q">
-        <img src="bymaay-logo.png" alt="Bymaay Fashion Haul paid ad">
+      <div class="vcard" data-niche="fashion" data-yt="5HKaf8M096Q">
+        <img src="https://img.youtube.com/vi/5HKaf8M096Q/maxresdefault.jpg" alt="Bymaay Fashion Haul paid ad">
         <span class="vcard-style">Paid Ad</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
@@ -637,8 +631,8 @@
         </div>
       </div>
 
-      <div class="vcard logo-card" data-niche="fashion" data-yt="1wx1mtqQ9Jk">
-        <img src="bymaay-logo.png" alt="Bymaay Aly Bag paid ad">
+      <div class="vcard" data-niche="fashion" data-yt="1wx1mtqQ9Jk">
+        <img src="https://img.youtube.com/vi/1wx1mtqQ9Jk/maxresdefault.jpg" alt="Bymaay Aly Bag paid ad">
         <span class="vcard-style">Paid Ad</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
@@ -853,9 +847,7 @@
     const style = card.dataset.style;
     const nicheLabel = card.dataset.nicheLabel;
     const brief = card.dataset.brief;
-    const thumbnail = card.classList.contains('logo-card')
-      ? 'bymaay-logo.png'
-      : `https://img.youtube.com/vi/${yt}/maxresdefault.jpg`;
+    const thumbnail = `https://img.youtube.com/vi/${yt}/maxresdefault.jpg`;
     card.innerHTML = `
       <img src="${thumbnail}" alt="${title}">
       <span class="vcard-style">${style}</span>
