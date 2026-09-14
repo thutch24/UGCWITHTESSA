@@ -129,14 +129,11 @@
   /* ── BRANDS ── */
   #brands { background: var(--oat); border-top: 1px solid rgba(107,74,56,0.07); border-bottom: 1px solid rgba(107,74,56,0.07); padding: 2.8rem 0; overflow: hidden; }
   .brands-label { font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--mid); text-align: center; margin-bottom: 1.6rem; }
-  .brands-track-wrap {
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
-  }
-  .brands-track { display: flex; align-items: center; animation: scroll-brands 22s linear infinite; width: max-content; will-change: transform; }
-  .brands-set { display: flex; align-items: center; justify-content: space-around; gap: 4.5rem; min-width: 100vw; padding: 0 3rem; flex-shrink: 0; }
-  @keyframes scroll-brands { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .brands-track-wrap { overflow: hidden; }
+  .brands-track { display: flex; align-items: center; width: max-content; will-change: transform; }
+  .brands-track.is-ready { animation: scroll-brands 22s linear infinite; }
+  .brands-set { display: flex; align-items: center; justify-content: flex-start; gap: clamp(4.5rem, 6vw, 8rem); width: max-content; padding-right: clamp(4.5rem, 6vw, 8rem); flex-shrink: 0; }
+  @keyframes scroll-brands { from{transform:translateX(0)} to{transform:translateX(calc(-1 * var(--brand-loop-distance)))} }
   .brand-logo-img { height: 44px; max-width: 190px; object-fit: contain; flex-shrink: 0; mix-blend-mode: multiply; }
   .brand-logo-img[alt="bymaay"] { display: none; }
   .brand-logo-circle {
@@ -849,6 +846,30 @@
 <script>
   if (history.scrollRestoration) history.scrollRestoration = 'manual';
   window.scrollTo(0,0);
+
+  // Keep enough identical logo groups in the track to cover any screen width.
+  const brandsTrack = document.querySelector('.brands-track');
+  function setupBrandLoop() {
+    if (!brandsTrack) return;
+    brandsTrack.classList.remove('is-ready');
+    while (brandsTrack.children.length > 2) brandsTrack.lastElementChild.remove();
+    const firstSet = brandsTrack.firstElementChild;
+    const setWidth = firstSet?.getBoundingClientRect().width || 0;
+    if (!setWidth) return;
+    while (brandsTrack.scrollWidth < window.innerWidth + (setWidth * 2)) {
+      const clone = firstSet.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      brandsTrack.appendChild(clone);
+    }
+    brandsTrack.style.setProperty('--brand-loop-distance', `${setWidth}px`);
+    brandsTrack.classList.add('is-ready');
+  }
+  window.addEventListener('load', setupBrandLoop);
+  let brandResizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(brandResizeTimer);
+    brandResizeTimer = setTimeout(setupBrandLoop, 150);
+  });
 
   // Nav shadow
   const nav = document.getElementById('nav');
