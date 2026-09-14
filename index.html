@@ -127,20 +127,24 @@
   }
 
   /* ── BRANDS ── */
-  #brands { background: var(--oat); border-top: 1px solid rgba(107,74,56,0.07); border-bottom: 1px solid rgba(107,74,56,0.07); padding: 2.5rem 0; overflow: hidden; }
+  #brands { background: var(--oat); border-top: 1px solid rgba(107,74,56,0.07); border-bottom: 1px solid rgba(107,74,56,0.07); padding: 2.8rem 0; overflow: hidden; }
   .brands-label { font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--mid); text-align: center; margin-bottom: 1.6rem; }
-  .brands-track-wrap { overflow: hidden; }
-  .brands-track { display: flex; align-items: center; animation: scroll-brands 18s linear infinite; width: max-content; will-change: transform; }
-  .brands-set { display: flex; align-items: center; justify-content: space-around; gap: 4rem; min-width: 100vw; padding: 0 2rem; flex-shrink: 0; }
+  .brands-track-wrap {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+  }
+  .brands-track { display: flex; align-items: center; animation: scroll-brands 22s linear infinite; width: max-content; will-change: transform; }
+  .brands-set { display: flex; align-items: center; justify-content: space-around; gap: 4.5rem; min-width: 100vw; padding: 0 3rem; flex-shrink: 0; }
   @keyframes scroll-brands { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-  .brand-logo-img { height: 34px; flex-shrink: 0; mix-blend-mode: multiply; }
+  .brand-logo-img { height: 44px; max-width: 190px; object-fit: contain; flex-shrink: 0; mix-blend-mode: multiply; }
   .brand-logo-img[alt="bymaay"] { display: none; }
   .brand-logo-circle {
     width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%;
     object-fit: contain; display: none;
   }
-  .brand-logo-circle-fixed { width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; object-fit: contain; display: block; }
-  .brand-logo-peppy { height: 34px; width: auto; flex-shrink: 0; border-radius: 6px; object-fit: contain; display: block; }
+  .brand-logo-circle-fixed { width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; object-fit: contain; display: block; }
+  .brand-logo-peppy { height: 44px; width: auto; max-width: 190px; flex-shrink: 0; border-radius: 7px; object-fit: contain; display: block; }
 
   /* ── SECTION SHARED ── */
   .section-wrap { max-width: 1200px; margin: 0 auto; }
@@ -343,7 +347,7 @@
     #proof { flex-wrap: wrap; padding: 1.8rem 1rem; gap: 0; }
     .proof-item { flex: 0 0 50%; padding: 0.8rem 1rem; border-right: none; border-bottom: 1px solid rgba(255,241,191,0.15); }
     .proof-item:nth-child(odd) { border-right: 1px solid rgba(255,241,191,0.15); }
-    .proof-item:nth-last-child(-n+2) { border-bottom: none; }
+    .proof-item:last-child { flex-basis: 100%; border-right: none; border-bottom: none; }
     #portfolio { padding: 4rem 1.5rem; }
     .portfolio-header { flex-direction: column; align-items: flex-start; }
     .featured-grid { grid-template-columns: repeat(3,1fr); gap: .8rem; margin-bottom: 3rem; }
@@ -586,7 +590,7 @@
 
       <div class="vcard" data-niche="family" data-yt="PjEEixWLO0U">
         <img src="https://img.youtube.com/vi/PjEEixWLO0U/maxresdefault.jpg" alt="Tweetycam">
-        <span class="vcard-style">Ad Style</span>
+        <span class="vcard-style">Paid Ad</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Baby & Family</span>
@@ -596,7 +600,7 @@
 
       <div class="vcard" data-niche="wellness" data-yt="Wy80jDBXCyw">
         <img src="https://img.youtube.com/vi/Wy80jDBXCyw/maxresdefault.jpg" alt="MooGoo">
-        <span class="vcard-style">Ad Style</span>
+        <span class="vcard-style">Paid Ad</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Wellness</span>
@@ -626,7 +630,7 @@
 
       <div class="vcard" data-niche="home" data-yt="Gucwmky6fW8">
         <img src="https://img.youtube.com/vi/Gucwmky6fW8/maxresdefault.jpg" alt="Euclove Cleaning Products lifestyle video">
-        <span class="vcard-style">Ad Style</span>
+        <span class="vcard-style">Paid Ad</span>
         <div class="vcard-overlay"><div class="vcard-play"><svg viewBox="0 0 18 18"><polygon points="4,1 17,9 4,17" fill="#6B4A38"/></svg></div></div>
         <div class="vcard-footer">
           <span class="vcard-niche">Home</span>
@@ -903,7 +907,7 @@
 
   // Give brands a clear starting point, then keep the remaining eight examples in a tidy gallery.
   const featuredGrid = document.getElementById('featuredGrid');
-  ['PjEEixWLO0U', '1wx1mtqQ9Jk', 'Gucwmky6fW8'].forEach(id => {
+  ['_B3EOyc97g0', '1wx1mtqQ9Jk', 'Gucwmky6fW8'].forEach(id => {
     const card = document.querySelector(`.vcard[data-yt="${id}"]`);
     if (card) featuredGrid.appendChild(card);
   });
